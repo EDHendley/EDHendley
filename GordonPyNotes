@@ -1,0 +1,13 @@
+a=’LCpl’
+b=’Hendley”
+‘Hello. My name is {} {}.’ .format (a,b)	#might be {,} instead
+	or
+f’Hello. My name is {a} {b}.’
+
+
+‘hello world’ .split()
+[‘hello’, ‘world’]
+
+
+
+.join, joins a list back together with a period “.”
