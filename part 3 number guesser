@@ -1,0 +1,18 @@
+  1 #!/usr/bin/env python3
+  2 
+  3 def guess_number(n):
+  4     
+  5 
+  6 
+  7     count = int(input('Guess a number! \n'))
+  8     while n!= count:
+  9         if n > count:
+ 10             count = int(input('too low, guess again! \n'))
+ 11         elif n < count:
+ 12             count = int(input('too high, guess again! \n'))
+ 13         else:
+ 14             break
+ 15     print('WIN')
+ 16     
+ 17 
+ 18 pass
