@@ -1,0 +1,10 @@
+#"vim ~/.vimrc to edit the vim file, input the below"#
+
+   
+syntax enable
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set number
+filetype indent on
+set autoindent                        
