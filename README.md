@@ -9,8 +9,11 @@
         Don't.
 
 https://git.cybbh.space/programming/python/public/-/blob/master/activities/pe1/part2/part2.adoc
+
 https://cctc.cybbh.io/students/students/latest/Day_0_Setup.html#_vta_stack_build_for_opstations
+
 https://docs.python.org/3/reference/compound_stmts.html#while
+
 https://vta.cybbh.space/horizon/auth/login/?next=/horizon/project/instances/
 
 
