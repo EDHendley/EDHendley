@@ -11,3 +11,8 @@ f’Hello. My name is {a} {b}.’
 
 
 .join, joins a list back together with a period “.”
+
+
+'''l[x], l[] = l[1-x], l[x]'''
+ 35         '''i[x]=255-(int(i[x]))'''
+ 36        ''' i[x]=str(i[x])'''
