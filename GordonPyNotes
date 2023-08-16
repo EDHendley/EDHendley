@@ -16,3 +16,54 @@ f’Hello. My name is {a} {b}.’
 '''l[x], l[] = l[1-x], l[x]'''
  35         '''i[x]=255-(int(i[x]))'''
  36        ''' i[x]=str(i[x])'''
+
+
+
+fp is file pointer, but we dont use it
+we use:
+	with open('test.txt') as fp:
+		pass
+
+with open('test'txt.') ...uses 'r' (read) as default
+
+with open ('test'.txt', 'w') as fp:
+	fp.write('First Line\n')
+	lines = ('Second\n','Third\n', 'fourth\n', 'Last\n']
+	fp.writelines(lines)
+
+with open('test.txt') as fp:
+fp.read()
+
+'First Line\nSecond\nThird\nFourth\nLast\n'
+
+with open('test.txt') as fp:
+	fp.readable
+
+with open('test.txt') as fp:
+	print(fp.readable)
+
+with open('user.txt, 'w') as fp:
+	while True:
+		data=input('test for file or E0F?: ')
+		if data == 'EOF':
+			break
+		fp,write(data+'\n\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
