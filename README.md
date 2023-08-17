@@ -20,7 +20,7 @@ https://docs.python.org/3/reference/compound_stmts.html#while
 
 https://vta.cybbh.space/horizon/auth/login/?next=/horizon/project/instances/
 
-
+https://docs.python.org/3/library/functions.html
 
 <!---
 EDHendley/EDHendley is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
