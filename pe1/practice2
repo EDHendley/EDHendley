@@ -1,0 +1,123 @@
+  1 #!/usr/bin/env python3
+  2 
+  3 def q1(sentence):
+  4     '''
+  5     Given a string of multiple words separated by single spaces,
+  6     return a new string with the sentence reversed. The words
+  7     themselves should remain as they are. For example, given
+  8     'it is accepted as a masterpiece on strategy', the returned
+  9     string should be 'strategy on masterpiece a as accepted is it'.
+ 10     '''
+ 11 
+ 12     sentence = sentence.split(' ')
+ 13     string = []
+ 14     for word in sentence:
+ 15         string.insert(0, word)
+ 16     return (" ".join(string))
+ 17 
+ 18 
+ 19 
+ 20     pass
+ 21 
+ 22 def q2(n):
+ 23     '''
+ 24     Given a positive integer, return its string representation with
+ 25     commas seperating groups of 3 digits. For example, given 65535
+ 26     the returned string should be '65,535'.
+ 27     '''
+ 28     int(n)
+ 29     num ='{:,}'.format(n)
+ 30     return num
+ 31     #how does it know where it put the ,?
+ 32     pass
+ 33 
+ 34 def q3(lst0, lst1):
+ 35     '''
+ 36     Given two lists of integers, return a sorted list that contains
+ 37     all integers from both lists in descending order. For example,
+ 38     given [3,4,9] and [8,1,5] the returned list should be [9,8,5,4,3,1].
+ 39     The returned list may contain duplicates.
+ 40     '''
+ 41 
+ 42     num=lst0 + lst1
+ 43     return sorted(num, reverse=True)
+ 44 
+ 45     pass
+ 46 
+ 47 def q4(s1,s2,s3):
+ 48     '''
+ 49     Given 3 scores in the range [0-100] inclusive, return 'GO' if
+ 50     the average score is greater than 50. Otherwise return 'NOGO'.
+ 51     '''
+ 52     pass
+ 53 
+ 54     lst=s1+s2+s3
+ 55     hmm=(lst/3)
+ 56     if hmm >50:
+ 57         return 'GO'
+ 58     else:
+ 59         return 'NOGO'
+ 60 
+ 61 
+ 62 def q5(integer, limit):
+ 63     '''
+ 64     Given an integer and limit, return a list of even multiples of the
+ 65     integer up to and including the limit. For example, if integer==3 and
+ 66     limit==30, the returned list should be [0,6,12,18,24,30]. Note, 0 is
+ 67     a multiple of any integer except 0 itself.
+ 68     '''
+ 69 
+ 70 
+ 71 
+ 72     pass
+ 73 
+ 74 def q6(f0, f1):
+ 75     '''
+ 76     Given two filenames, return a list whose elements consist of line numbers
+ 77     for which the two files differ. The first line is considered line 0.
+ 78     '''
+ 79     pass
+ 80 
+ 81 def q7(lst):
+ 82     '''
+ 83     Return the first duplicate value in the given list.
+ 84     For example, if given [5,7,9,1,3,7,9,5], the returned value should
+ 85     be 7.
+ 86     '''
+ 87 
+ 88     pass
+ 89 
+ 90 def q8(strng):
+ 91     '''
+ 92     Given a sentence as a string with words being separated by a single space,
+ 93     return the length of the shortest word.
+ 94     '''
+ 95     pass
+ 96 
+ 97 def q9(strng):
+ 98     '''
+ 99     Given an alphanumeric string, return the character whose ascii value
+100     is that of the integer represenation of all of the digits in the string
+101     concatenated in the order in which they appear. For example, given
+102     'hell9oworld7', the returned character should be 'a' which has
+103     the ascii value of 97.
+104     '''
+105     pass
+106 
+107 def q10(arr):
+108     '''
+109     Given a list of positive integers sorted in ascending order, return
+110     the first non-consecutive value. If all values are consecutive, return
+111     None. For example, given [1,2,3,4,6,7], the returned value should be 6. 
+112     '''
+113     hmm= sorted(list(arr))
+114     print(arr)
+115     pass
+116 if not arr: return 0
+117     for i, x in enumerate(arr[:-1]):
+118         if x + 1 != arr[i + 1]:
+119             return arr[i + 1]
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+~                                                          
