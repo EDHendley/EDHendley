@@ -71,5 +71,28 @@ def get_sum(a,b):
         return soma
 ========================================================
 
+ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
 
+If the function is passed a valid PIN string, return true, else return false.
 
+Examples (Input --> Output)
+"1234"   -->  true
+"12345"  -->  false
+"a234"   -->  false
+
+def validate_pin(pin):
+    return len(pin) in (4, 6) and pin.isdigit()
+=====================================================================
+Simple, given a string of words, return the length of the shortest word(s).
+
+String will never be empty and you do not need to account for different data types.
+
+def find_short(s):
+    return min(len(x) for x in s.split())
+
+OR
+
+def find_short(s):
+    s = s.split() # splits the string into a list of individual words
+    l = min(s, key = len) # finds the shortest string in the list
+    return len(l) # returns shortest word length
