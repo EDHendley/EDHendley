@@ -75,7 +75,18 @@
  75     '''
  76     Given two filenames, return a list whose elements consist of line numbers
  77     for which the two files differ. The first line is considered line 0.
- 78     '''
+ 78     ''
+  dif=[]
+ 83      linenum=0
+ 84       with open(f0) as fp0:
+ 85           with open(f1) as fp1:
+ 86               lines0 =fp0.readlines()
+ 87           for i in fp1.readlines():
+ 88               if i != lines0[linenum]:
+ 89                   dif.append(linenum)
+ 90                   linenum +=1
+ 91       return dif
+
  79     pass
  80 
  81 def q7(lst):
