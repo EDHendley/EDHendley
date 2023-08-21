@@ -1,0 +1,25 @@
+  1 use Student Guide
+  2 #split ips on the period (.) and think of them as 4 sections.
+  3 
+  4 #may have to do many if statements
+  5 #DO NOT OVERTHINK, the answer is prob simple, ask if confused
+  6 
+  7 tuples, just typecast it
+  8 
+  9 dont forget return or print (depending on question)
+ 10 
+ 11 split, join, split (email exercise)
+ 12 
+ 13 1 file IO question (its in handbook)
+ 14 
+ 15 "read string from user" use input("stuff here")
+ 16 
+ 17 isdigit, isnumeric; do not have to do ==True (or false) it already does it
+ 18 
+ 19 you probably have to start with an empty list
+ 20 
+ 21 use print statements to check work, type ( stuff here) as well
+ 22 
+ 23 
+~                                                                                                                                                  
+~                   
