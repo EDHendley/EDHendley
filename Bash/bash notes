@@ -55,5 +55,30 @@ touch file{1..10}.txt    {} brace expansion, does the command that many times wi
 -rw-rw-r-- 1 student student    0 Aug 22 14:31 file8.txt
 -rw-rw-r-- 1 student student    0 Aug 22 14:31 file9.txt
 
+egrep "student|root|randomuser" /etc/passwd
+egrep '^[a-zA-Z]' /etc/hosts
+cat /etc/passwd | egrep -o/home.*/  -o only matching
+cat /etc/passwd | grep -n /home  -n line number
+                -v    finds NOT matches
+grep -C3 'root' /etc/passwd    -C3 everything 3 lines above and 3 lines below, -A everything after, -B everything before
+
+ps -u student    process started since student logged on,  -u user
+ps --forest
+
+more /etc/passwd | cut -d: -f1  d is delimiter, my default it delimits by tab, here we are delimiting by colon(:), -f1 being field 1, here it will return the first field of passwd, which is the user's name
+more /etc/passwd | cut -d: -f3- here -f3- is signifing we want field three and the hyphen (-) at the end is stating everything else, so this will return the results of more /etc/passwd with the 3rd field appearing first and everything else after that
+"                          -f1,3  this will return fields 1 and 3.    the fields are established because our delimiter is the colon.
+
+"                | cut -c3-10  is showing characters(c) 3 through 10
+"                | cut -d- -f1- -s  will only show files that contain the delimiter, in this case the hyphen(-)
+echo "cosc zero seven" | cut -d" " -f2 --complement  will result in cosc seven, --complement signals to exclude the second field
+&     sends command to background and will run it indefinetly
+&&   and operator
+||   or operator
+>   redirector
+>>   append
+2>   stderr, standard error
+2>>  appends stderr message to a file
+
 
 
