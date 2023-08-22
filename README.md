@@ -10,6 +10,9 @@
 
   
 Student Handbook
+
+https://cted.cybbh.io/tech-college/pns/public/pns/latest/guides/bash_sg.html
+
 https://git.cybbh.space/programming/python/public/-/blob/master/activities/Python_Student_Handbook/PyStuHBK.adoc
 
 https://git.cybbh.space/programming/python/public/-/blob/master/activities/pe1/part2/part2.adoc
