@@ -113,6 +113,13 @@
 102     'hell9oworld7', the returned character should be 'a' which has
 103     the ascii value of 97.
 104     '''
+
+chars=[]
+123     for c in strng:
+124         if c.isdigit():
+125             chars.append(c)
+126     return chr(int(''.join(chars)))
+
 105     pass
 106 
 107 def q10(arr):
