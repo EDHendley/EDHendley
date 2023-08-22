@@ -1,0 +1,59 @@
+DAY 1
+
+more tail less cat head
+
+/etc/passwd
+/etc/shadow
+
+rmdir, rm -rf, mkdir, ls, ln
+
+find . -iname    -i ignores case
+. current working directory 
+.. parent working directory
+/ root
+
+find / -inum 38 2>/dev/null
+  2>/dev/null pushes errors/denies to /dev/null (2 is stderror)
+
+find . -size 10c (10c = 10 bytes) (c=byte)
+
+find / -user stuff
+find / -maxdepth 2 (2 layers/folders deep)
+find . -maxdepth 2 -type d (d is directory)
+
+find / -mindepth
+
+find / -name *.txt (or any . extension)
+
+        -empty looks for files with no content
+        -size 0 means the file is taking up no space
+find / -atime 3    (mac)time: modified, access, created     3, from now to 3 days ago
+find / -cmin -30    created in 30 mintues
+find / -executable ! -type d    in linux, directories are executable
+find / -type d -iname log -exec ls -l {} \; 2>/dev/null  executing ls -l on every finding of every directroy with log
+
+find /var/log -iname *.log -exec ls -al {} 2>/dev/null \;
+
+find /var/log -iname *.log 2>/dev/null -printf "%i %f\n"  printf ,%i inode  ,%f file name
+
+mkdir -p /tmp/find
+touch /tmp/find/{1..10}.txt
+                        .sh
+find /tmp/find ! -name *.txt
+
+find /tmp/find -type f ! -name *txt
+
+touch file{1..10}.txt    {} brace expansion, does the command that many times with that many numbers, {A..E} can do the same with alphabet
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file1.txt
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file10.txt
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file2.txt
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file3.txt
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file4.txt
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file5.txt
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file6.txt
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file7.txt
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file8.txt
+-rw-rw-r-- 1 student student    0 Aug 22 14:31 file9.txt
+
+
+
