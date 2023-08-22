@@ -81,5 +81,5 @@ echo "cosc zero seven" | cut -d" " -f2 --complement  will result in cosc seven, 
 2>   stderr, standard error
 2>>  appends stderr message to a file
 
-
-
+find / -type d -iname log -exec ls -l {} \;
+"                                     {} +om
