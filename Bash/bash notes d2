@@ -1,0 +1,43 @@
+tail passwd | awk -F: '{print$1,$3}'
+  : is the delimiter, showing fields 1 and 3
+tail passwd | awk -F: '{print $NF}'
+  same as above, prints last field only
+tail passwd | awk -F: '{print$0}'
+  if that line has the : then print the whole line
+#instead of tail passwd you can:
+awk -F: '{print $0}' ./passwd
+  put file path after the awk
+awk -F: 'BEGIN {OFS=":"}{print $1,$3,$4}' ./passwd
+  output the file and can set a new delimiter (with the OFS=") and print specific fields, like more/cat/less but better
+awk -F: '($3 >= 150){print $3}' passwd
+  
+awk -v myvar=$(sed -i 's/root/groot/g' $HOME/passwd) -F: '{OFS=":"}{$1=myvar; print}'
+  ???
+
+  A=$(cat /etc/passwd)
+  echo $A
+    return the result of cat /etc/passwd
+  B='cat /etc/passwd'
+  echo $B
+    returns the string "cat /etc/passwd"
+
+    
+sed 's/home/nobodyhome/' passwd
+    in the passwd file, substitutes (s) the first appearance of home with nobodyhome
+sed 's/home/nobodyhome/g' passwd
+    same as above, but changes EVERY appearance of home with nobodyhome
+sed 's/\/bin\/bash/\/been\/better/' sed passwd
+    changes /bin/bash to /been/better, the \ is used to escape the directing / from the replacing /, really odd
+sed '/home/d' passwd
+    deletes every line with an instance of home
+sed -e'/xrdp/d' -e '/telnetd/d' passwd
+    deletes every line with instances of xrdp and telnetd
+
+cat sortie | awk -F: '{print$1}' | sort
+  sorts by ASCII table, looks alpabetical but not really
+cat sortie | awk -F: '{print$1}' | uniq
+  sorts by ASCII and uniqiness
+cat sortie | awk -F: '{print$1}' | sort | uniq -c
+  sort by ASCII, unique, and gets count of each
+cat sortie | awk -F: '{print$3,$4}' | sort -n
+  sorts and returns their ASCII number
