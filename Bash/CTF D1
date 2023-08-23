@@ -1,0 +1,21 @@
+#01
+
+
+
+
+02
+find $HOME/1123 -name *.txt ! -name "*~*" -exec cp {} $HOME/CUT/. \;
+
+
+
+03
+
+
+
+04
+
+
+
+
+05
+find $HOME/1123 -name *.txt ! -name "*~*" -exec cp {} $HOME/CUT/. \;
