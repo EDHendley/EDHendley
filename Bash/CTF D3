@@ -4,3 +4,14 @@ $1= fileName
 $2= userName
 $3= userGroupid
 tail -1 $1 | awk -F: -v "name=$2" -v "id=$3" 'BEGIN {OFS=":"} {$1=name} {$3=id} {$4=id} {$6="/home/"name} {$7="/bin/bash"} {print}' >> $1
+
+
+
+15
+find /bin /etc/ /var -maxdepth 3 -not -type p -exec md5sum {} \; 1> success.txt
+find /bin /etc/ /var -maxdepth 3 -not -type p -exec md5sum {} \; 2> fail.txt
+fail=$(wc -l fail.txt)
+
+
+
+succ=$(wc -l success.txt)
