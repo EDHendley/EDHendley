@@ -1,1 +1,69 @@
+LOOPS in bash
 
+for x in {1..10};; do
+> echo $x
+> done
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+or write it in single line
+for x in {1..10}; do echo $x; done
+
+can execute commands in for loops; ie command substitution
+for x in $(cat /etc/passwd); do echo $x; done
+(bunch of cats of /etc/passwd)
+
+vim passScript
+#!/bin/bash
+for x in $(cat /etc/passwd | awk -F: '{print $1}')
+  do echo $x is a user on this system
+done
+
+chmod +x passScript
+./passScript
+
+while [[ $x -le '10' ]]; do 
+> echo $x
+> x=$(($x+1))
+> done
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+#!/bin/bash
+x=0
+while true; do
+  if [[ $x -gt 10 ]] ; then
+    break
+  fi
+  echo $x
+  x=$(($x+!))
+done
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
