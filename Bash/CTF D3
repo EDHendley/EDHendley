@@ -1,10 +1,31 @@
+#11
+Activity:
+
+Using find, find all files under the $HOME directory with a .bin extension ONLY.
+Once the file(s) and their path(s) have been found, remove the file name from the absolute path output.
+Ensure there is no trailing / at the end of the directory path when outputting to standard output.
+You may need to sort the output depending on the command(s) you use. Have each path displayed only once.
+Tip: For stripping the filename out of the output, there are different ways that this can be accomplished based on what you have learned so far.
+
+Utilizing -printf options on find.
+Utilizing awk to manipulate the fields. This may leave the trailing / if you don't take that into account.
+Utilizing the rev and cut commands creatively.
+
+ANSWER
+find ~ -iname "*.bin" 2>/dev/null | rev | cut -d. -f2 | rev | sort -u
+
 #12
 
 $1= fileName
 $2= userName
 $3= userGroupid
-tail -1 $1 | awk -F: -v "name=$2" -v "id=$3" 'BEGIN {OFS=":"} {$1=name} {$3=id} {$4=id} {$6="/home/"name} {$7="/bin/bash"} {print}' >> $1
-
+tail -1 $1 | awk --F: -v "name=$2" -v "id=$3" 'BEGIN {OFS=":"} {$1=name} {$3=id} {$4=id} {$6="/home/"name} {$7="/bin/bash"} {print}' >> $1
+---------------OR-----------------
+name =$2
+uid=$3
+file=$1
+base=$(tail -1 $file)
+echo $base | awk -F: -v "awkname=$name" -v "awkuid=$uid" 'BEGIN {OFS=":"} {$1=awkname} {$3=awkuid} {$4=awkuid} {&6="/home/awkname} {$NF="/bin/bash"} {print $0} >> $file
 
 
 15
