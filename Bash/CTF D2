@@ -22,3 +22,35 @@ man regex.7
 
 ANSWER:
 grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' StoryHiddenIPs | sort -n | uniq -c | sort -r
+
+#7
+Activity:
+
+Using ONLY the awk command, write a BASH one-liner script that extracts ONLY the names of all the system and user accounts that are not UIDs 0-3.
+Only display those that use /bin/bash as their default shell.
+The input file is named $HOME/passwd and is located in the current directory.
+Output the results to a file called $HOME/SED/names.txt
+Tip: awk can use conditional statements, e.g. print only the line in /etc/passwd that has "root" as its first field.
+
+awk -F: '($1 == "root") {print $0}' /etc/passwd
+ passwd
+
+ANS
+cat $HOME/passwd | awk -F: '($3 > 3 && $7 == "/bin/bash"){print$1}' > $HOME/SED/names.txt
+
+
+#8
+Activity:
+
+Find all dmesg kernel messages that contain CPU or BIOS (uppercase) in the string, but not usable or reserved (case-insensitive)
+Print only the msg itself, omitting the bracketed numerical expressions ie: [1.132775]
+Note: For security reasons, the dmesg command is being emulated on the CTFd backend. You can still use it as normal on your Linux OpStation, but to get a similar output, do not use any dmesg switches. The intent of this activity is to take raw dmesg output and combine it with grep and either awk or cut to manipulate the output into a desired end state.
+
+Tip: As you may have noticed, when using grep you can simulate a logical AND by piping the output of one grep command to the next. This will filter down your output to only what contains all your patterns. But, for this activity, you will need to use a logical OR to match on a wide range of strings. If you do not recall how to utilize that option in grep, go research it from the resources available to you.
+ANSW:
+dmesg | grep 'CPU\|BIOS' | grep -v 'usable\|reserved' |  cut -d] -f2-
+
+#9
+
+
+
