@@ -39,9 +39,14 @@ ANSWER:
 A=$(which ping)
 B=$(ip route | grep default | cut -d' ' -f3)
 C=$($A -c6 $B | grep loss | cut -d, -f6 | cut -d% -f1)
-
-if [[ $C -eq 0 ]]; then
+test='0'
+if [[ '$C' -eq '0' ]]; then
    echo "successful";
 else
    echo "failure";
 fi
+
+INSTRUCTOR ANSWER:
+
+
+
