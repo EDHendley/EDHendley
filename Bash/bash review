@@ -4,3 +4,31 @@ special parameters
 function
 
 grep -v (removes), -i (ignore case), -E (regex), -c (context, above and below), -r (recursive), -a (binary files)
+
+cut -d'delimiter' -f# (cuts out the delimiter and splits into field
+    -f
+    -s
+    -c (searches delimiter, think of it as recursive)
+
+wc -l
+
+sort
+uniq
+
+touch -t (time specific)
+      -d (date specific)
+
+tar -czf
+zip
+
+kill (by pid)
+pkill (by name)
+
+if [[ <some conditional> <compariso> conditional ]]; then (or do)
+if [[ $var -le 0]]; then
+  echo "<words>"
+elif [[ <some more things> ]]; then
+  echo "<more words>"
+else;
+  echo "that's all folks"
+fi
