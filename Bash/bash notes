@@ -8,6 +8,7 @@ more tail less cat head
 /etc/shadow
 
 rmdir, rm -rf, mkdir, ls, ln
+find -exec <cmd> <options> {} \; -or- +
 
 find . -iname    -i ignores case
 . current working directory 
