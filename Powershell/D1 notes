@@ -17,3 +17,22 @@ Get-Help Get-Process -Full
 "        *log*    (or something else, shows you what you can do with whatever in the wild card)
 Want to update help pages?
 Update-Help -Force -ErrorAction SilentlyContinue
+
+instead of ls or dir
+Get-ChildItem
+PS will still accept ls or dir but it is an alias
+Get-Alias
+Want to clear screen?
+cls (alias for Clear-Host)
+want to remove an alias?
+Remove-Item alias:<alias_name_here>
+ex
+Set-Alias edit notepad.exe
+edit  (will open notepad)
+Remove-Item alias:edit
+
+want to see all the alias for a cmdlet? for ex, childitem has many aliases attached to it
+Get-Alias -Definition Get-ChildItem
+
+want to see all the methods and properties of a proccess?
+Get-Process | Get-Member
