@@ -1,6 +1,9 @@
 xfreerdp /u:student /v:10.50.45.158 -dynamic-resolution +glyph-cache +clipboard
 
-Powershell is a object-oriented language, class and object based so has coinciding methods and attribute. syntax uses a Verb-Noun structure, "commands" are cmdlets (command lets)
+Powershell is a object-oriented language, class and object based so has coinciding methods and attribute. 
+
+
+syntax uses a Verb-Noun structure, "commands" are cmdlets (command lets)
 Verb-Noun -[option] <string[]> -[option] <string[*inputs]> ... etc      *may accept multiple inputs  
 
 Get-Command
