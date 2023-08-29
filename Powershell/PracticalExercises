@@ -12,7 +12,7 @@ Practical Exercise: Find Cmdlets
       Write-Host, Write-Output
 
 5.What cmdlets can be used to create, modify, list, and delete variables?
-      Get-Variable, dir env, Remove-Variable
+      Get-Variable, dir env, Remove-Variable, Set-Variable, New-Variable, $var=... Remove-Variable
 
 6.What cmdlet can be used, other than Get-Help, to find and list other cmdlets?
       Get-Command (-Noun), Get-Verb
@@ -23,17 +23,17 @@ Practical Exercise: Find Cmdlets
 Practical Exercise: Running Cmdlets
 
 1.Display a list of running processes.
-	
+	Get-Process
 2.Display a list of all running processes that start with the letter "s".
-
+	Get-Process -Name s*
 3.Find the cmdlet and its purpose for the following aliases:
 
   a.gal
-
+	Get-Alias
   b.dir
-
+	Get-ChildObject
   c.echo
-
+	Write-Output
   d.?
 
   e.%
@@ -43,4 +43,14 @@ Practical Exercise: Running Cmdlets
 4.Display a list of Windows Firewall Rules.
 
 5.Create a new alias called "gh" for the cmdlet "Get-Help"
+	Set-Alias gh Get-Help
+variables
 
+   1.$var1= get-random -Maximum 50 -Minimum 25
+   2.$var2=Get-Random -Minimum 1 -Maximum 10
+   5.$prod = $var1 * $var2
+   
+   9.Replace the variables in text with their values in the following format:
+
+"var1" * "var2" = "prod"
+"{0} * {1} = {2}" -f $va1, $var2, $prod
