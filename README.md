@@ -31,4 +31,5 @@ EDHendley/EDHendley is a ✨ special ✨ repository because its `README.md` (thi
 You can click the Preview link to take a look at your changes.
 --->
 
-10.50.33.114
+10.50.33.114 linux opstation
+10.50.45.158 windows opstation
