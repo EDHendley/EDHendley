@@ -50,3 +50,17 @@ Pipes and Powershell
 Get-Service | Format-Table Name, Status
 
 dir config.log | Rename-Iem -NewName {"old_$($_.Name)"}    every file in config.log will be renamed with "old_" appended to the front of it
+
+write-host vs write-output
+-host goes to the screen no matter what
+-output goes to standrd output, which could be screen, pipe, etc
+
+"double quotes allows variable expansion so you can call a variable within a string denoted with """
+ex 
+$var = "Jon"
+1. Write-Host "hello $var"
+'single quotes returns what is inside as literal'
+2. Write-Host 'hello $var"
+
+in first instance the " " will return "hello Jon" to the screen
+In the second, the ' ' will return 'hello $var' because it got the literal string
