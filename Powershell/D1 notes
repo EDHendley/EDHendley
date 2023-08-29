@@ -1,1 +1,18 @@
+xfreerdp /u:student /v:10.50.45.158 -dynamic-resolution +glyph-cache +clipboard
 
+Powershell syntax uses a Verb-Noun structure, "commands" are cmdlets (command lets)
+Verb-Noun -[option] <string> -[option] <string> ... etc
+
+Get-Command
+Get-Command -Noun <name>
+Get-Verb
+Get-Process
+
+Want info on a command?
+Get-Help <cmdlet>
+Get-Help Get-Command
+Get-Help Get-Process -Full
+"        "           -showwindow
+"        "           -online
+Want to update help pages?
+Update-Help -Force -ErrorAction SilentlyContinue
