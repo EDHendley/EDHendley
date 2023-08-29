@@ -66,3 +66,7 @@ in first instance the " " will return "hello Jon" to the screen
 In the second, the ' ' will return 'hello $var' because it got the literal string
 
 to check the type of a variable, ($var).GetType()
+
+$var = [int32](read-host)
+read-host is basically input, takes input from user
+write-host is print
