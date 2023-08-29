@@ -14,5 +14,6 @@ Get-Help Get-Command
 Get-Help Get-Process -Full
 "        "           -showwindow
 "        "           -online
+"        *log*    (or something else, shows you what you can do with whatever in the wild card)
 Want to update help pages?
 Update-Help -Force -ErrorAction SilentlyContinue
