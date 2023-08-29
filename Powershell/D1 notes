@@ -48,3 +48,5 @@ Get-Process | Get-Member
 Pipes and Powershell
 
 Get-Service | Format-Table Name, Status
+
+dir config.log | Rename-Iem -NewName {"old_$($_.Name)"}    every file in config.log will be renamed with "old_" appended to the front of it
