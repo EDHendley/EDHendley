@@ -70,3 +70,42 @@ to check the type of a variable, ($var).GetType()
 $var = [int32](read-host)
 read-host is basically input, takes input from user
 write-host is print
+===============================================================================================================
+Script block / code block
+$myblock = { Get-Service | Format-Table Name, Status }    <----notice the curlies, this is NOT a variable, its a script block
+& $myblock   <---- how to callback the script block
+^  dont forget the and/ampersand
+the & is an alias for invoke-command
+
+$a=Get-Process notepad
+$b = {Get-Process notepad }
+
+the difference is the variable $a is static, once run it will store the process info for notepad, once notepad is terminated the data remains
+with script block & $b, when it is run it will store the same info but once notepad is terminated the info is no longer stored, it is dynamic
+
+Get-ChildItem | Sort-Object -Property Extension | Format-Table -Groupby Extension
+  each type of extension will get their own table. clean and easy way to find files by different extensions
+
+Get-Service | Group-Object Status | ft -GroupBy Status     ft is Format-Table
+
+Get-Service | Group-Object {$_.Name.Substring(0,1).ToUpper()} | ForEach-Object{($_.Name + " ") *7; "==========" $_.Group}
+
+Get-Variable | Sort-Object Name | ft -property Name, Description -AutoSize -wrap
+
+Get-Serice | Where-Object{$_.Status -eq 'running'}
+
+Get-ChildItem *.txt | Where-Object {$_.Length -gt 100}
+
+Get-Service | Get-Member
+
+Get-Process | Where-Object {$_.Company -like 'micro*'} | Fortmat-Table Name, Description, Company
+
+Get-Process | Where-Object {$_.Name -notlike 'powershell*'} | Sort-Object id -Descending
+
+Get-Process | Where-Object processname -ne "Idle" | sort-object starttime | Select-Object -ErrorAction ft processname, starttime
+
+
+
+
+
+
