@@ -9,12 +9,38 @@ Practical Exercise: Find Cmdlets
       Get-Service
 
 4.What cmdlets are used to write or output objects or text to the screen?
-      
+      Write-Host, Write-Output
 
 5.What cmdlets can be used to create, modify, list, and delete variables?
-
+      Get-Variable, dir env, Remove-Variable
 
 6.What cmdlet can be used, other than Get-Help, to find and list other cmdlets?
-
+      Get-Command (-Noun), Get-Verb
 
 7.Find the cmdlet that is used to prompt the user for input.
+      Read-Host
+===================================================================================================================================
+Practical Exercise: Running Cmdlets
+
+1.Display a list of running processes.
+	
+2.Display a list of all running processes that start with the letter "s".
+
+3.Find the cmdlet and its purpose for the following aliases:
+
+  a.gal
+
+  b.dir
+
+  c.echo
+
+  d.?
+
+  e.%
+
+  f.ft
+
+4.Display a list of Windows Firewall Rules.
+
+5.Create a new alias called "gh" for the cmdlet "Get-Help"
+
