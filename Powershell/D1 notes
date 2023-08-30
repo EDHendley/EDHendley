@@ -148,6 +148,180 @@ Name        Value
 0            MO536
 ===========================================
 
+$nums = 1,2,3,4,5
+$nums | ForEach-object{$_ * 2}
+
+$list ='a','b','c','d'
+$list | ForEach-Object{$_.ToUpper()}
+
+ForEach ($item in gci C:\ -recurse){$item.name}
+
+Get-ChildItem C:\ -recurse | ForEach-Object{$_.name}    must pipe info into a ForEach-Object
+
+ForEach($num in 1..5){$num * 2}
+
+$teams = "Tigers","Pistons","Red Wings", "Lions"
+foreach($team in $teams) {"Detriot Steam}
+
+#ForEach processes much faster than ForEach-Object()
+
+$var = ""
+while($var -ne "Marines") {
+  $var = Read-Host "Which branch of the military is the best?"
+
+$num = 0
+do {
+  $num
+  $num++
+} while($num -lt 3)
+
+$num = 0
+while ($num -lt 3) {
+  $num
+  $num++
+}
+
+do {
+  code block
+}until(condition)
+
+$num = 0
+do {
+  $num
+  $num++
+}until($num -gt 3)
+
+
+for (intitialization; condition; increment)
+{
+  code block to be executed.
+}
+
+for($num =1; $num -le 3; $num++){$num}
+
+for($i = 0; $i -le 255; $i++) {
+  write-host 192.168.0.$i
+}
+======================================================================================================
+---Arrays---
+
+$x=get-process
+($x).GetType
+>> Array
+$x -is [array]
+>>True
+$x.count
+>>161  (some high number, number of processes running)
+$array = @()    empty array
+$array2 -5..10
+$array[4,-1,2]    [index(s) positions]
+$array[-1]    value in last index
+>> 10
+$array[4..$array.length]
+>>
+-1
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+--Jagged Array-- (prob never use it)
+$jaggarray = "joe","jim","jan",(1, ('apple','pear'), 3), "jay"
+$jagarray[3][1][1]
+
+--Multi deminsional array--
+$TargetingArray = @(
+  (35.7219, 51.3347, "Tehran"),
+  (39.9042, 1164074, "Beijing"),
+  (39.0738,125.8198, "Pyongyang"),
+  (33.5138,36.2765,"Damascus"),
+)
+
+$TargetingArray[0][1]
+
+foreach ($line in $TargetingArray) {
+  if ($line[2] -eq 'Beijing'){
+    write-output $line
+  }
+}
+
+>>
+39.9042
+116.4074
+Beijing
+==============================================================
+HASH TABLE (aka dictionary)
+(key,value)
+
+$myHash = @{First = "John"; Last = "Doe"; Mid = "Bon"; Age = 35
+>>
+Name            Value
+-----            ------
+First            John
+Last             Doe 
+Mid              Bon
+Age              35
+
+$myHash.Date=Get-Date
+$mylist["Location"]="France"
+>>
+Name            Value
+-----            ------
+First            John
+Last             Doe
+Date             8/30/2023 10:08.04 AM
+Mid              Bon
+Age              35
+Location         France
+
+$myHash.Remove("Location")    will remove Location and it's value
+
+write-host text `n `"quotation marks`"    (back tick `, like \ in other langs, allows you to print special characters
+>>
+text
+"quotation marks"
+
+$test1 = "One Terabyte is $(1TB/1GB) Gigabytes"
+$test1
+>>
+"one Terabyte is 1024 Gigabytes"
+
+$text = @"
+Here is text with "quotes"
+1TB eq $(1TB/GB) GB.
+Variables are resolved.
+"$PWD" is your current path.
+"@
+
+>>                     $PWD is already a default variable of "print working directory"
+"Here is text with "quotes"
+1TB eq 1024 GB.
+Variables are resolved.
+C:/Windows/system32 is your current path."
+
+(ipconfig) -match 'IPv4'
+>>
+IPv4 Address. . . . . . . . . . : 192.168.65.10
+
+'192.168.0.1' -replace '\d{1,3}$','255'
+>>
+192.168.0.255
+
+$env:username, '@', $env:computername, ".", $env:userdomain -join ""
+>>
+student@wIN-OPS.WIN-OPS
+
+get-process | select name, description | where description -match '^S'
+
+
+
 
 
 
