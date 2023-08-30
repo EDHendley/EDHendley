@@ -320,8 +320,12 @@ student@wIN-OPS.WIN-OPS
 
 get-process | select name, description | where description -match '^S'
 
-
-
+===FUNCTIONS===
+function test-func {
+  param(
+    $param1='Default Value 1', $param2='Default Value 2'
+    )
+}
 
 
 
