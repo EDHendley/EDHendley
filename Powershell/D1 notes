@@ -104,6 +104,52 @@ Get-Process | Where-Object {$_.Name -notlike 'powershell*'} | Sort-Object id -De
 
 Get-Process | Where-Object processname -ne "Idle" | sort-object starttime | Select-Object -ErrorAction ft processname, starttime
 
+1,2,3,12,3,1,2,3,1,2,3 | Sort-Object | Get-Unique
+>
+1
+2
+3
+
+(Get-ChildItem | Measure-Object Length).count
+    get child item is an array, this measures the length, then displays the count
+Get-ChildItem | Measure-Object Length -Average -Maximum -Minimum -Sum
+
+$array = 1, 2, 3, 4, 5
+$sum = 0
+
+$array | ForEach-Object {$sum += $_}
+
+making an object
+
+$woman = new-object object 
+Add-Member -me NoteProperty -name Color -value 'The best' -InputObject $woman
+
+or
+
+$Soldier = [PSCustomObject]@{
+  "FirstName"  =  "jim"
+  "LastName"   =  "bom"
+  "Rank"       =  "Pvt"
+  "MOS"        =  "17C"
+  "Position    =  "Insider Threat"
+  "Purporse"   =  "Reveal top secrets in a video game to look cool"
+
+}
+
+$text = 'Here is the model number: MO5364'
+$pattern = 'MO(\d{3})'
+$text -match $pattern
+$matches
+
+>result>>>>>
+Name        Value
+-----       ------
+1            536
+0            MO536
+===========================================
+
+
+
 
 
 
