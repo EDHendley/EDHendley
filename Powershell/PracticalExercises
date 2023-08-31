@@ -93,7 +93,168 @@ Create Func
 Reverse Array
 Array & Hash Table
 
-
+===============================================================================================
+0.0.0.0 to 255.255.255.255 regex finder:
 \b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:(?:2([0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9]))\b
+
+==============================================================================
+REV ARRAY
+$start=Get-random -minimum "-10" -maximum 0
+$stop= Get-random -minimum "-5" -maximum 5
+$arry= $num1..$num2
+$arry
+
+$reverse=$arry[(array.length-1)..0]
+or
+[array]::Reverse($array)
+or
+sort object | descending
+
+HASH TABLE
+$employee1=[ordered]@{}
+$employee2=[ordered]@{}
+
+$employee1.First = "Mary"
+$employee1["Last"] = "Hopper"
+$employee1.ID="001"
+$employee1["Job"] = "Software Developer"
+
+$employee1.Job = "Software Lead"
+
+================================================
+LOOPING & ITERATION
+
+$procs = "notepad", "msedge", "mspaint"
+
+$proces | ForEach-Object { Start-Process $_ }
+
+Get-Process
+
+###$procs | ForEach-Object { Stop-Process $_}### not useful
+
+$file = "$pwd\procs.txt"
+
+foreach($proc in $procs){
+	get-process | Where-Objext{$_.Name -like $proc}
+	ForEach-Object{Add-Content $file $_.ID} }
+Start-Sleep -seconds 5
+
+get-content .\procs.txt | forEach-Object{Stop-process $_}
+=============================================================================
+CREAT FUNCTIONS
+
+##Get-OrdinalDate
+Function Get-OrdinalDate {
+    $date=(get-date).dayofyear
+    $year=(get-date).year
+    write-host $year"-"$date
+}
+##Get-SquareNum
+Function Get-SquareNum([Int]$num) {
+    $result = $num * $num
+    $result
+}
+##Get-Product
+Function Get-Product($val1,$val2,$val3) {
+    return $val1 * $val2 * $val3
+}
+=============================================================================
+ADV FUNC
+
+##Get-MultiSum
+Function Get-MultiSum([array]$array,[int]$number) {
+    Begin {
+        $sum = 0
+    }
+    Process {
+        ForEach($num in $array) {
+            if($num -eq $number) {
+                continue
+            }
+            $sum += $num
+        }
+    }
+    End {
+        $sum
+    }
+}
+##Get-LongestName
+Function Get-LongestName {
+    Begin {
+        $count = 0
+        $states = @()
+    }
+    Process {
+        while($count -lt 3) {
+            $res = Read-Host "Enter a U.S. State"
+            $states += $res
+            $count += 1
+        }
+    }
+    End {
+        $list = $states | sort -Property Length -Descending
+        ForEach($state in $list) {
+            "$state`: " + $state.length
+        }
+    }
+}
+=======================================================================================================================================
+REGEX
+
+Function Get-NetInfo {
+    $pattern = '.*?((\d{1,3}\.){3}\d{1,3})'
+    $netinfo = ipconfig
+    $ip = $netinfo -match "IPV4$pattern" | %{if($_ -match $pattern) {$Matches[1] }}
+    $subnet = $netinfo -match "Subnet$pattern" | %{if($_ -match $pattern) {$Matches[1] }}
+    $gw = $netinfo -match "Gateway$pattern" | %{if($_ -match $pattern) {$Matches[1]}}
+    "IP: {0}`nSubnet: {1}`nGateway: {2}" -f $ip, $subnet, $gw
+}
+##
+<#
+Function Get-UrlInfo {
+    $file = gc .\dns.txt
+    $regex = '(www\.[a-zA-Z0-9\-\.]+\.(com|org|net))'
+    #$regex = '(w{3}\.)(?<=[a-z]\.)(c-m){3}'
+    foreach($line in $file) {
+        if($line -match $regex) {
+            $Matches[1]
+        }
+    }
+}
+##
+#>
+Function Get-UrlInfo {
+    $ips = @()
+    $file = gc .\dns.txt
+    $regex = '(www\.[a-zA-Z0-9\-\.]+\.(com|org|net))'
+    #$regex = '(w{3}\.)(?<=[a-z]\.)(c-m){3}'
+    foreach($line in $file) {
+        if($line -match $regex) {
+            $Matches[1]
+            $ips += $Matches[1]
+        }
+    }
+    $ips.count
+    $ips | sort | group
+}
+======================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
