@@ -1,0 +1,31 @@
+xfreerdp /u:student /v:<windows op> /dynamic-resolution +clipboard +glyph-cache    
+    
+  get-host | select version
+
+read a fie
+  get-content -path "C:\file p0ath:"
+  cat
+  get-help Get-Process -Online
+  get-location
+  pwd
+  get-alias pwd
+  get-process ||get membber
+  Get-processos | select-object Fe   pross
+
+  
+Start-process notepad.exe
+stop-Process -anmme notepad.exe,
+Get-process | select-object name,id, path | Where-oject {$_.id -lt '1000'}
+Get-CimClass
+  GetWmiobject -class winw32_logicaldsi -filter "drivetype=3"
+  $letterArray = "a","b","v"
+    foreach ($x in letterarray)
+  {
+    write-host $x
+    }
+  $a=2
+  if ($a -gt 2){
+    write-host "the value $a is gt
+  }
+elseif($a -eq 2)
+    write-host "stuff go herer
