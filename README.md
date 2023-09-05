@@ -31,8 +31,7 @@ https://docs.python.org/3/library/functions.html
 EDHendley/EDHendley is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
-###########################################################################
-10.50.33.114 linux opstation
+###########################################################################10.50.33.114 linux opstation
 ###########################################################################
 10.50.45.158 windows opstation
 ###########################################################################
