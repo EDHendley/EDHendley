@@ -27,5 +27,18 @@ Get-CimClass
   if ($a -gt 2){
     write-host "the value $a is gt
   }
-elseif($a -eq 2)
+elseif($a -eq 2){
     write-host "stuff go herer
+}
+else {
+    write-host "gibe mimi"
+}
+
+#createVariable
+$myVar=Get-Process
+$myVar
+#unSet Variable
+Clear-Variable -name myVar
+#getRidOF
+Remove-Variable -name myVar
+$today= (get-date).DateTime
