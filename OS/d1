@@ -74,5 +74,6 @@ cat -path $Profile.CurrentUserCurrentHost
 new-item -ItemType file -path $profile.currentUserCurrentHost -force
 
 
-
+foreach ($x in $myarray2){ >> expand-archive omage"$x.zip -DestinationPath .\ -force | get-content omega"$x".zip }
+regex: kung-fu
 
