@@ -54,6 +54,25 @@ Get-ExecutionPolicy
 Get-Service | Where-Object {$_.Status -eq "stopped"}
 Get-Service | Where-object {$_.Name -like "*xbox*"}
 
+#powershell profile, establishing persistence on windows******** !!!!!!      ($Profile)
+processes can not start themselves
+if you want variables or scripts to remain after shutdown, they would save it to a powershell profile
+$Profile
+test-path -path $Profile.AllUsersAllHosts
+>> results a boolean response, True/False, False if nothing set beyond default
+test-path -path $Profile.AllUsersCurrentHosts
+>> same thing as above
+test-path -path $Profile.CurrentUserAllHosts
+>>same
+test-path -path $Profile.CurrentUserCurrentHost
+>>same
+#read a profile
+get-content -path $profile.currentUser.CurrentHosts
+cat -path $Profile.CurrentUserCurrentHost
+    to see the contents of the given profile file made, IMPORTANT*** this is where persistence lives
+#create a profile
+new-item -ItemType file -path $profile.currentUserCurrentHost -force
+
 
 
 
