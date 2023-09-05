@@ -1,3 +1,5 @@
+
+
 xfreerdp /u:student /v:<windows op> /dynamic-resolution +clipboard +glyph-cache    
     
   get-host | select version
@@ -42,3 +44,6 @@ Clear-Variable -name myVar
 #getRidOF
 Remove-Variable -name myVar
 $today= (get-date).DateTime
+
+#Automatic Variables
+$PROFILE        Full path of the PowerShell profile for the current user and the current host application.
