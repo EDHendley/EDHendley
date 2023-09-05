@@ -47,3 +47,13 @@ $today= (get-date).DateTime
 
 #Automatic Variables
 $PROFILE        Full path of the PowerShell profile for the current user and the current host application.
+
+#execution policy, can i even run .ps1 (powershell scripts) on this user?
+Get-ExecutionPolicy
+#comparison opperator
+Get-Service | Where-Object {$_.Status -eq "stopped"}
+Get-Service | Where-object {$_.Name -like "*xbox*"}
+
+
+
+
