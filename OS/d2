@@ -1,2 +1,5 @@
 https://os.cybbh.io/-/public/-/jobs/846714/artifacts/os/modules/004_windows_registry/pages/8_registry.html
 
+HKCU - is a volatile hive. Consist of user setting for this instance. Uses symbolylic link
+HKLM
+HKCR - will run first on everboot,
