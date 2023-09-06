@@ -26,7 +26,9 @@ https://docs.python.org/3/reference/compound_stmts.html#while
 https://vta.cybbh.space/horizon/auth/login/?next=/horizon/project/instances/
 
 https://docs.python.org/3/library/functions.html
+
 ==================================================================================
+
 USEFUL
 https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/
 
