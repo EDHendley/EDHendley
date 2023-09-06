@@ -9,3 +9,13 @@ HKCC
 
 get-psdrive
 new-psdrive
+
+Get-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+cd registry::HKU  (or any other key/hive)
+ls
+>> gives all the SIDs, match it to a name using next command
+Get-LocalUser -Name '(name here)' | Select-Object sid
+>> gives the user's sid
+
+reg query HKU\(SID HERE)\Software\Microsoft\CurrentVersion\Run
+Get-ChildItem -Path C:\ -Recurse -Filter "*<string>*" -force -ErrorAction SilentlyContinue
