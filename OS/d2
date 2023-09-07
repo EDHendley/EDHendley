@@ -19,3 +19,4 @@ Get-LocalUser -Name '(name here)' | Select-Object sid
 
 reg query HKU\(SID HERE)\Software\Microsoft\CurrentVersion\Run
 Get-ChildItem -Path C:\ -Recurse -Filter "*<string>*" -force -ErrorAction SilentlyContinue
+can use type as alias for get-content
