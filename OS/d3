@@ -1,1 +1,8 @@
+linux / bash
+
+Perm      Relative      Octal      On a file        On a dir
+
+read        r            4        read contents      list contents  
+write       w            2        write contents     create/delete content within
+exe         x            1        run file as exe    move in dir  
 
