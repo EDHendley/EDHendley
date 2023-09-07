@@ -12,3 +12,10 @@ whereis finds all files associatedto the command. use whereis
 
 MAC addresses
 egrep '\b(([0-9A-Fa-f]{2}-){5})[0-9A-Fa-f]{2}\b' numbers
+--------------------------------------------------------------------------------
+File: home/garviel/numbers
+Use awk to print lines:
+>= 420 AND <=1337
+The flag is a SHA512 hash of the output.
+
+awk 'NR>=420 && NR<=1337' numbers | sha512sum
