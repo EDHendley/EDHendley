@@ -1,0 +1,18 @@
+sudo xxd -l 8 -s 392 -g 1 /dev/vda
+sudo dd tf=/dva/vda of=demo bs=8 count=5 skip=392
+ls -l /etc/rc3.d/
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
