@@ -4,6 +4,10 @@ ls -l /etc/rc3.d/
 	
 dd if=/home/bombadil/mbroken skip=446 bs=1 count=16 | md5sum
 
+rc<runLevel#>.d to view files of run level
+ex:
+ls -l rc5.d
+
 
 
 
