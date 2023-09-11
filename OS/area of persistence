@@ -1,2 +1,6 @@
 Here is persistence techniques
 
+/etc/profile	*ppersistence
+	anytime someone invokes a shell
+/etc/environmental	*persistence
+	stores global variables
