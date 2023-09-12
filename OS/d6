@@ -1,1 +1,35 @@
+Show processs but sort by certain properties
+get-process | select name, id, description, path | sort -property id | more
+
+get-process -name "*chrome*" | select-object -expandproperty Modules | more
+find and how processes with the name "chrome" in them, expand their Modules property to see the files w/ ext.
+
+get-process -name "*chrome*" | select-object -expandedproperty module | where modulename -like '*chrome*' |more
+find same as above but ONLY show use files run exclusively with chrome in module name (above will show us some random system files as well)
+
+get-process | get-member
+
+get-ciminstance win32_service | select name,processid,pathname | more
+get-ciminstance win32_process | select name,processid,parentprocessid,path | ft -wrap | more
+
+tasklist /m /fi "IMAGENAME eq chrome.exe"
+sc query
+sc queryex type=service (can add state=inactive) | more
+
+get-scheduledtask | more
+get-scheduledtask | select * | select -first 1
+schtasks /query /tn "fileName" /v /fo list
+
+get-nettcpconnection
+
+
+navigate to sysinternalsSuite
+.\sigcheck.exe -m C:\windows\System32\slui.exe
+get-psdrive
+New-PSDrive -name "sysint" -PSprovider Filesystem -root "\\live.sysinternals.com\Tools"
+$wc = new-object System.Net.WebClient 
+$wc.DownloadFile("https://download.sysinternals.com/files/SysinternalsSuite.zip", "$pwd\SysinternalsSuite.zip")
+Expand-Archive SysinternalsSuite.zip
+.\AUTORUNS    great tool **********
+
 
