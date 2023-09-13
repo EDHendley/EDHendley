@@ -116,3 +116,6 @@ ls
   336 root       20   0  4028    68     0 S  0.0  0.0  0:00.00 │     ├─ ___James_
   335 root       20   0  4028    68     0 S  0.0  0.0  0:00.00 │     ├─ ___Rick__
   334 root       20   0  4028    68     0 S  0.0  0.0  0:00.00 │     └─ ____Im___
+
+/bin/bash -c netcat -lp 3389 < /tmp/NMAP_all_hosts.txt 
+
