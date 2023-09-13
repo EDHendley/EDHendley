@@ -1,0 +1,9 @@
+ps -elf     is king of showing processes 
+For kernel-space processes [kthreadd] ( PID = 2 )
+
+For user-space processes /sbin/init ( PID = 1 )
+  ps --ppid 1
+shows child processes of 1
+htop      view processes in real time
+ps -elf --forest     shows process tree
+      
