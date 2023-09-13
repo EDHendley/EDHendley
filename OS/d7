@@ -118,4 +118,29 @@ ls
   334 root       20   0  4028    68     0 S  0.0  0.0  0:00.00 │     └─ ____Im___
 
 /bin/bash -c netcat -lp 3389 < /tmp/NMAP_all_hosts.txt 
+PID 12235
+
+garviel@terra:/etc/cron.d$ cat mdadm
+#
+# cron.d/mdadm -- schedules periodic redundancy checks of MD devices
+#
+# Copyright © martin f. krafft <madduck@madduck.net>
+# distributed under the terms of the Artistic Licence 2.0
+#
+
+# By default, run at 00:57 on every Sunday, but do nothing unless the day of
+# the month is less than or equal to 7. Thus, only run on the first Sunday of
+# each month. crontab(5) sucks, unfortunately, in this regard; therefore this
+# hack (see #380425).
+57 0 * * 0 root if [ -x /usr/share/mdadm/checkarray ] && [ $(date +\%d) -le 7 ]; then /usr/share/mdadm/checkarray --cron --all --idle --quiet; fi
+
+garviel@terra:/etc/cron.d$ cat popularity-contest
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+21 13 * * *   root    test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-contest --crond
+
+
+
+
+
 
