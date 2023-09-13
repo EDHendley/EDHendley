@@ -1,9 +1,36 @@
-ps -elf     is king of showing processes 
+ps -elf                is king of showing processes 
 For kernel-space processes [kthreadd] ( PID = 2 )
 
 For user-space processes /sbin/init ( PID = 1 )
-  ps --ppid 1
-shows child processes of 1
+  ps --ppid 1          shows child processes of 1
+
 htop      view processes in real time
-ps -elf --forest     shows process tree
-      
+ps -elf --forest       shows process tree
+
+PROCESS OWNERSHIP
+  effective user ID (euid) defines access rights for a proces
+  real user ID (ruid)
+  
+SYSTEM CALLS
+  an interaction between a process and the kernel
+two calls, fork() and exec()
+  fork, the kernel creates a nearly identical copy of process
+  exec, the kernel starts a progam, replacing the current process
+kill -l   shows all kill signals we can send, 64 of them
+
+ORPHAN & ZOMBIE (DEFUNCY) PROCESSES
+  daemons are orphans, similar to a type of service
+  once parent killed, orphan is adopted by sbin/init
+disown -a && exit    close shell and force all children to be adopted
+
+Zombie (defunct)
+completed process but still taking a spot in the process table
+cant be closeed with kil unless it parent is killed, doesnt use resources but takes up a entry space
+
+Fork bomb, DOS attack where a process continuakky replicates itself to deplete resources of host
+  fixed with ulimit 0u 30
+
+ps -elf | grep -v grep | grep sleep
+
+
+
