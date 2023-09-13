@@ -31,6 +31,7 @@ https://docs.python.org/3/library/functions.html
 
 USEFUL
 https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/
+http://10.50.21.56:8000/files/76ce04bc7b7db20f0b8aa177d2b80794/SysinternalsSuite.zip
 
 <!---
 EDHendley/EDHendley is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
