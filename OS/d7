@@ -19,7 +19,7 @@ two calls, fork() and exec()
 kill -l   shows all kill signals we can send, 64 of them
 
 ORPHAN & ZOMBIE (DEFUNCY) PROCESSES
-  daemons are orphans, similar to a type of service
+  daemons are orphans, the name of a service(windows) in linux
   once parent killed, orphan is adopted by sbin/init
 disown -a && exit    close shell and force all children to be adopted
 
