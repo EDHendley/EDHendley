@@ -101,3 +101,18 @@ linux persist
   ~/.bash_profile
   ~/.profile
 
+0 1 2 3 4
+nc        30490      witch_king    3u     IPv4            4105339      0t0        TCP *:1234 (LISTEN)
+tcp        0      0 127.0.0.1:50092         127.0.0.1:1234          TIME_WAIT   -                    timewait (17.36/0/0)
+ls 
+/sauron
+32563 root       20   0  4028   680   616 S  0.0  0.0  0:00.00 │  └─ /usr/local/bin/thenine
+32564 root       20   0  4160    72     0 S  0.0  0.0  0:00.00 │     └─ ________Nazgul________
+32565 root       20   0     0     0     0 Z  0.0  0.0  0:00.00 │        └─ thenine
+
+/sauron
+  333 root       20   0  4028   680   620 S  0.0  0.0  0:00.00 │  └─ /bin/funk
+  337 root       20   0  4028    68     0 S  0.0  0.0  0:00.00 │     ├─ !!!!!!!!!
+  336 root       20   0  4028    68     0 S  0.0  0.0  0:00.00 │     ├─ ___James_
+  335 root       20   0  4028    68     0 S  0.0  0.0  0:00.00 │     ├─ ___Rick__
+  334 root       20   0  4028    68     0 S  0.0  0.0  0:00.00 │     └─ ____Im___
