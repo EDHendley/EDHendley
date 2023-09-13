@@ -32,5 +32,72 @@ Fork bomb, DOS attack where a process continuakky replicates itself to deplete r
 
 ps -elf | grep -v grep | grep sleep
 
+DAEMONS (SERVICES)(any .d is a daemon)
 
+systemd or systemv? use ps --pid 1 and look at result, in our LINOPS here is result:
+ PID TTY            TIME   CMD
+   1   ?        00:00:18   systemd
+
+
+manipulate service with sysv
+service (serviceName)
+
+manipulate service w/ systemd
+  systemctl list-units -all              every service
+  systemctl list-unit-files
+  systemctl stop <service>.service       stops service
+
+JOBS CONTROLS
+jobs      views jobs
+(see guide/slides for more)
+
+CRON JOBS (same as sched tasks in windows)
+  cron daemon can check /var/spool/cron, /etc/cron.d, and /etc/crontab
+  two types of cron jobs, system and user cron jobs
+    system cron jobs
+      run as root, rigidly scheduled
+      perform system maintenance, ie cleaning out /tmp and rotating logs
+      controlled by /etc/crontab
+    
+    user cron jobs
+      crontab command creates user cron jobs
+      stored in /var/spool/cron/crontabs/
+
+  **if you see a file in cronjobs, cat the file, IT COULD BE IMPORTANT**
+  some  syntax
+    * * * * * /directory/and/command
+    *(0-59)  *(0-23)          *(1-31)            *(1-12)     *(0-7,0=sunday)   /directory/and/command
+    min       hour             dom(dayOfMonth)   mon(month)  dow(dayOfWeek)     user command
+
+    ‘crontab -u [user] file’ - sets users crontab file to the contents of listed file
+
+    ‘crontab -l -u [user]’ - Displays user’s crontab contents
+
+    ‘crontab -r -u [user]’ - Removes user’s crontab contents
+
+    ‘crontab -e -u [user]’ - edits user’s crontab contents
+
+    crontab jobs run with the permissions of the owner of the crontab file
+  
+THERE COULD BE GOOD(BAD) STUFF IN /proc DIRECTORY, in this are processes labeled by their PIDs
+  ie /proc/27819   (this is a random PID)
+    > bunch o' results
+
+sudo lsof    pulls up open files
+  u is r+w
+  
+sudo netstat -ltup      gives an additional field at the end PID/Program Name, showing what process Id and name is causing the connection
+  
+
+
+***
+linux persist
+  daemons
+  /etc/profile
+  /etc/profile.d
+  init files
+  cron jobs (sched tasks in windows)
+  bash.bashrc
+  ~/.bash_profile
+  ~/.profile
 
