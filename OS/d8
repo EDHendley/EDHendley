@@ -3,3 +3,5 @@ Getting user SID
 get-wmiobject win32_useraccount | select name,sid (PowerShell)
 Get-LocalUser | select Name,SID (PowerShell)
 wmic useraccount get name,sid (CMD.EXE ONLY)
+
+Get-Eventlog -LogName System | ft -wrap | findstr /i flag
