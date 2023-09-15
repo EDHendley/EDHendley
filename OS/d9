@@ -1,1 +1,3 @@
 cat /etc/rsyslog.d/50-default.conf
+
+Any logs having to do with logins and authentication attempts. . /var/log/auth.log - Authentication related events . /var/run/utmp - Users currently logged in .. Not in human readable format. Must use last command . /var/log/wtmp - History file for utmp .. Not in human readable format. Must use last command . */var/log/btmp - Failed login attempts
