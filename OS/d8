@@ -4,4 +4,16 @@ get-wmiobject win32_useraccount | select name,sid (PowerShell)
 Get-LocalUser | select Name,SID (PowerShell)
 wmic useraccount get name,sid (CMD.EXE ONLY)
 
+
+
+
+Get-LocalUser | Select-Object sid        gets sids
+Get-LocalUser -Name student | Select-Object sid    RESOLVE NAMES  
+
+get-content 'C:\$Recycle.Bin\S-1-5-21-2881336348-3190591231-4063445930-1003\*'
+
+Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\*'
+
+Get-Itemproperty 'HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\S-1-5-21-2881336348-3190591231-4063445930-1000’
+
 Get-Eventlog -LogName System | ft -wrap | findstr /i flag
