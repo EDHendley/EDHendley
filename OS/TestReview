@@ -21,7 +21,8 @@ windows
 sysinternals, regedit, autorun****, procmon,processexplorer,tasklist 
 download sysinternals in the Windows SysInternals Tools tab on public page
 net use * http://live.sysinternals.com
-
+  autoruns >> options >> uncheck hide windows entries
+    
 
 commonly overlooked things
   suspicious ports
