@@ -1,1 +1,31 @@
+Look for suspicious ports
+
+netstat -anop(windows) -ltup(linux)
+sudo
+look for patterned numbers, repeating (1234, 6666,6667, 4442, etc)
+PID,port,services
+
+systemctl
+
+persistence
+linux
+  bashrc, inittab, cronjobs, crontab, /etc/cronjob, bash profiles
+windows
+  netstat -anop
+  get-process -id <PID>
+  windows artifacts (something left behind) decode these, userassist (ROT13 encoded) 
+    locations- BAM, recycle bin, prefetch files, recent files
+  persistence
+    run keys, iplocalmachine, iplocaluser, runonce, registry, start mechanism,
+    schedtasks(task scheduler),service keys, powershell profile, 
+sysinternals, regedit, autorun****, procmon,processexplorer,tasklist 
+download sysinternals in the Windows SysInternals Tools tab on public page
+net use * http://live.sysinternals.com
+
+
+
+
+
+commonly overlooked things
+  suspicious ports
 
