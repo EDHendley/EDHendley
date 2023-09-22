@@ -11,3 +11,8 @@ Any logs having to do with logins and authentication attempts. . /var/log/auth.l
 /var/log/wtmp   History for utmp
 /var/log/btmp    failed login attempts
 /var/log/secure  security logs
+
+
+
+Service to SID
+sc showsid <serviceName>
