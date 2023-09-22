@@ -16,3 +16,39 @@ Any logs having to do with logins and authentication attempts. . /var/log/auth.l
 
 Service to SID
 sc showsid <serviceName>
+
+
+//host[*]/address[1]/@addr
+//host[*]/ports[1]/port[1]/@portid
+
+
+
+
+Name                : Legit
+RequiredServices    : {}
+CanPauseAndContinue : False
+CanShutdown         : False
+CanStop             : False
+DisplayName         : Totally-Legit
+DependentServices   : {}
+MachineName         : .
+ServiceName         : Legit
+ServicesDependedOn  : {}
+ServiceHandle       : SafeServiceHandle
+Status              : Stopped
+ServiceType         : Win32OwnProcess
+StartType           : Automatic
+Site                :
+Container           :
+
+
+
+
+Legit                                            0 C:\windows\system32\kbd101f.cmd
+
+
+
+STACK 13 EXAM
+10.50.47.47 linux		10.50.46.35 windows
+ssh -J admin@xx linux@10.xx
+ssh student@xx
