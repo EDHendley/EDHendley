@@ -10,7 +10,7 @@ OSI Model
     6.Presentation  Encryption, CodeTransmission,Video,File,Image,Compression,DataConversion/Translation
     5.Session    NetBios  SOCKS  RPC  RTP L2F  PPTP  L2TP
     4.Transport  TCP(3-way handshake** used to est session and set rules)    UDP(connectionless)
-    3.Network    ICMP,IPSec IPv4, IPv6    RIP(Marine),EIGRP,OSPF(army),IS-IS,BGP (routing proto of internet)
+    3.Network    ICMP,IPSec IPv4, IPv6    RIP,EIGRP(USMC),OSPF(army),IS-IS,BGP (routing proto of internet)
     2.Data Link   MAC & LLC wireless, ethernet, token ring, WAN LAN MAN, PPP HDLC ATM DSL (MAC ADDRESSES ARE HERE)
     1.Physical  radio waves, cables, fiber, twisted pair, coax
 
@@ -82,9 +82,33 @@ POP TCP 110
 IMAP TCP 143
 RDP TCP 3389
 DNS (Query/Response) TCP/UDP 53
-DHCP UDP 67/68
+DHCP UDP 67/68    server = port 67    client = 68
+  DHCPv4 - DORA - Discover, Offer, Request (Req), Acknowledge (Ack)
+  DHCPv6 - SARP - Solicit. Advertise, Request, Reply
 TFTP UDP 69
 NTP UDP 123
 SNMP UDP 161/162
 RADIUS UPD 1645/1646 AND 1812/1813
 RTP UDP >1023
+
+
+LAYER 2 SWITCHING
+
+CAM TABLE
+VLAN, 801.1q
+902.1ad "Q in Q
+STP
+  Spanning Tree Protocols, multple switches together. STP elects the switch closest to the router to be the root switch. prevents looping thus prev attacks that use looping
+CDP - Cisco Discovery Protocol
+LLDP - Link Layer Discovery Protocol
+DTP - Dynamic Trunking Protocol. Allows switches to "trunk" ports. Carry multiple VLAN connections on a single connect
+
+VTP - VLAN trunking protocol, disceminate VLAN info to many switches/clients to easily apply changes and configurations
+
+PORT SECURITY
+
+LAYER 3 ROUTING TECHNOLOGIES
+
+Routing Tables
+
+
