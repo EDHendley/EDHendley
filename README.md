@@ -27,6 +27,8 @@ https://vta.cybbh.space/horizon/auth/login/?next=/horizon/project/instances/
 
 https://docs.python.org/3/library/functions.html
 
+https://miro.com/app/board/o9J_klSqCSY=/
+
 ==================================================================================
 
 USEFUL
