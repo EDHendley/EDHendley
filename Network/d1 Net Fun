@@ -30,3 +30,9 @@ LLC (Logical Link Control) (layer 2 to 3)
 Ethernet Header
   EtherType 0800 =IPv4  0806 = ARP  86DD = IPv6  8100 = VLAN  8100 0064 = VLAN /w tag
       
+
+
+FRAG PROCESS
+Version (4) IHL (usually 5), 4*5 = 20 bytes,
+if MTU is 1500 byte, subtract by 20 bytes to account for header, then divide by 8
+1500-20=1480/8 = 185 byte offset 
