@@ -111,4 +111,33 @@ LAYER 3 ROUTING TECHNOLOGIES
 
 Routing Tables
 
+Anatomy of Routing
+https://net.cybbh.io/public/networking/latest/lesson-1-fundamentals/_images/Route_Types.png
+    Ultimate route is any routing table entry that has a next-hop IPv4 address, exit interface, or both.
+    Level 1 route is any route with the subnet mask (CIDR) is equal to or less than the classful mask of the network address. A level 1 route can be a:
+        Network route - A network route that has a subnet mask equal to that of the classful mask.
+            Class A - 255.0.0.0 (/8)
+            Class B - 255.255.0.0 (/16)
+            Class C - 255.255.255.0 (/24)
+        Supernet route - A network route with a mask less (smaller) than the classful mask.
+        Default route - A default route is a static route with the address 0.0.0.0/0.
+    Parent route is a level 1 network that is subnetted. A parent route will never be an ultimate route.
+    Level 2 child route are the subnets of a classful network address.
+
+Administrative Distance    dynamic (what the router learns about other routers) >>> static (what admin tells it)
+https://net.cybbh.io/public/networking/latest/lesson-1-fundamentals/_images/AD.png
+
+Table 6. Metric
+  RIP      Hop count
+  EIGRP    Bandwidth, Delay, Load, Reliability
+  OSPF     Cost (Bandwidth)
+  IS-IS    Cost (Assigned by Admin)
+  BGP      Policy assigned my Admin
+
+other metrics:
+  hop,bandwidth,delay,reliability.load,MTU,cost,admin defined
+
+BGP
+  shortest and most specific routes. Very slow and resource intense
+  hard to defend
 
