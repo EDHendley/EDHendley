@@ -1,0 +1,10 @@
+Network Traffic Sniffing
+
+
+
+
+
+sudo tcpdump -i eth0 -XXvvn not tcp port 22 && not arp , -vv is very verbose, -n is numbered, not tcp port 22 && not arp does exactly what is sound like
+
+
+  
