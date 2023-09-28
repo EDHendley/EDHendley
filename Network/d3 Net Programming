@@ -1,0 +1,16 @@
+Sockets
+  User
+    Stream
+    Data
+  Kernel-changes to hardware
+    Raw
+
+programming sockets - python
+  s = socket.socket(socket.FAMILY, socket.TYPE, socket.PROTOCOL)
+  socket.socket([*family*[,*type])
+  FAMILY constants: AF_INET (default)(ipv4), AF_INET6(ipv6),AF_UNIX
+  type constants should be: SOCK_STREAM (default), SOCK_DGRAM, SOCK_RAW
+  proto constants should be: 0 (default), IPPROTO_RAW
+
+
+  send socket to tunnel, tunnel to loopback, and set high number port to whatever port you set tunnel to
