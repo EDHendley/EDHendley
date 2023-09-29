@@ -1,1 +1,57 @@
+RECON
+
+                                        ACTIVE
+
+                    Network Scanning       |          DNS Query
+
+
+                                           |          ARP Request
+
+
+EXTERNAL ===============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+PASSIVE RECON - low risk discovery
+  Identify
+    IPs and Sub Domains
+    External and 3rd part sitres
+    People and Technologies
+    Content of Interest
+    Vulnerabilities
+
+  Gathering tools
+    whois query
+    job site listings
+    phone numbers ***     *2nd radio does this?*
+    Google searches
+    Passive OS fingerprinting
+  Network Recon
+    DNS
+    dig                    dig <url> <server_type>     *ie SOA,MX,etc
+    Zone Transfers         dig axfr @nsztml.digi.ninja zonetransfer.me
+    Host History           netcraft    waybackMachine
+    Google Searches        google dorks
+    SHODAN
+  NETWORK SCNNING
+    linux
+    for i in {1..254} ;do (ping -c 1 x.x.x.$i | grep "bytes from" &) ;done
+    windows
+    for /L %i in (1,1,255) do @ping -n 1 -w 200 192.168.1.%i > nul && echo x.x.x.%i is up.
+
+
+
+
+
+
 
