@@ -43,15 +43,136 @@ PASSIVE RECON - low risk discovery
     Host History           netcraft    waybackMachine
     Google Searches        google dorks
     SHODAN
-  NETWORK SCNNING
+  NETWORK SCANNING
     linux
     for i in {1..254} ;do (ping -c 1 x.x.x.$i | grep "bytes from" &) ;done
     windows
     for /L %i in (1,1,255) do @ping -n 1 -w 200 192.168.1.%i > nul && echo x.x.x.%i is up.
 
+  NMAP
+    PING SWEEP
+    nmap -T4 (-sS) (-sT) x.x.x.x(,x,x-x) -vv (-p <port-port,port>)    (-p-, scans EVERY port)
+
+    ARP scan
+
+    SYN scan
+
+    Full connect scan
+
+    Null scan
+
+    FIN scan
+      nmap -sF 10.50.44.120 -T4 -vv -p 21-23,80
+    XMAS tree scan
+      sudo nmap -sX 10.50.44.119 -p 21-23,80 -T4
+      shows filtered and open and closed, filtered is open but is blocked by permissions (firewall)
+    UDP scan
+      sudo nmap -sU -vv -T4 x.x.x.x -p <udp port>
+    Idle (zombie) scan (reflects another's host as running the scan)
+      -sI
+        ACK/Window scan
+
+    RPC scan
+
+    FTP scan
+
+    decoy scan
+
+    OS fingerprinting scan
+      -O
+    version scan
+
+    Protocol ping
+
+    Discovery probes
+
+    SCTP INIT scan
+      -A
+(port 3389 is RDP)
+  NETCAT
+    banner grabbing, see if a port is "real"
+      echo " " | nc x.x.x.x 22
+    echo " " | nc x.x.x.x 80
 
 
+ELHE-M-007
+
+#!/bin/bash
+echo "Enter network address (e.g. 192.168.0): "
+read net
+echo "Enter starting host range (e.g. 1): "
+read start
+echo "Enter ending host range (e.g. 254): "
+read end
+echo "Enter ports space-delimited (e.g. 21-23 80): "
+read ports
+for ((i=$start; $i<=$end; i++))
+do
+    nc -nvzw1 $net.$i $ports 2>&1 | grep -E 'succ|open'
+done
+# (-v) running verbosely (-v on Linux, -vv on Windows),
+# (-n) not resolving names. numeric only IP(no D.S)
+# (-z) without sending any data. zero-I/O mode(used for scanning)
+#(-w1) waiting no more than 1second for a connection to occur
+# (2>&1) redirect STDERR to STDOUT. Results of scan are errors and need to redirect to output to grep
+# (-E) Interpret PATTERN as an extended regular expression
+# ( | grep open) for Debian to display only open connections
+# ( | grep succeeded) for Ubuntu to display only the open connections
 
 
+discovery commands
+  hostname
+  ip a      the new ifconfig
+  ip route
+  ip neigh
+  arp -a
+  find
+  netstat -ntlp
+  ss -ntlp
+  ping sweep (ruby script)
+  nc scan for banner grabbing
+=================================================
+BIG THINGS BELOW
 
+
+Scan Methods
+  quick scan ports 21-23,80
+  specific ports based on hints/clues
+  well known range (0-1023)
+  chunks of 2000 or first 10000
+  hail mary - full port scan -p- (65535)
+
+Net Recon
+  Host Discovery
+    nmap,nc,scan script, ping sweep
+  Port Discovery
+    nmap,nc,scan script
+  Port Validation
+    banner grab w/ nc
+  Follow-on
+    if 22 or 23, connect and passive recon
+    if 21 or 80, wget -r IP_ADDRESS or wget -r ftp://IP_ADDRESS (or) firefox
+
+  passive recon on box
+    hostname
+    interface/subnet
+      ip a
+    neighbors
+      ip neigh
+      arp -a
+    files
+      find
+    listening ports
+      netstat -ntlp
+      ss -ntlp
+    available tools
+      which tcpdump wireshark, nmap, telnet, get ,curl ,ssh
+
+wget -r <ip>      gets snapshot of what the machine of ip has open
+eom <file.name>
+eog <file.name>
+cat <file.name>
+
+wget -r http://<ip>
+wget -r ftp://<ip>
 
