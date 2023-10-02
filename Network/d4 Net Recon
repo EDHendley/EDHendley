@@ -175,4 +175,36 @@ cat <file.name>
 
 wget -r http://<ip>
 wget -r ftp://<ip>
+======================================================
+sudo nmap 172.16.140.33 -sU -p 1999-2999 -T4
+
+2000/udp open          cisco-sccp
+2011/udp open          servserv
+2159/udp open|filtered gdbremote
+2164/udp open|filtered ddns-v3
+2184/udp open|filtered nvd
+2200/udp open          ici
+2214/udp open|filtered rpi
+2233/udp open|filtered infocrypt
+2250/udp open          remote-collab
+2273/udp open|filtered mysql-im
+2291/udp open|filtered eapsp
+2325/udp open|filtered ansysli
+2401/udp open|filtered cvspserver
+2455/udp open|filtered wago-io-system
+2514/udp open|filtered facsys-ntp
+2519/udp open|filtered globmsgsvc
+2570/udp open|filtered hs-port
+2598/udp open|filtered citriximaclient
+2800/udp open|filtered acc-raid
+2826/udp open|filtered slc-systemlog
+2882/udp open|filtered ndtp
+2905/udp open|filtered m3ua
+2907/udp open|filtered webmethods-b2b
+2984/udp open|filtered hpidsadmin
+2999/udp open          remoteware-un
+
+
+
+
 
