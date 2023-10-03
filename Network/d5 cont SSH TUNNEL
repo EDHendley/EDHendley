@@ -57,3 +57,8 @@ ss -alntp
 direct SSH
 dynamic SSH /w 
 
+ports
+40500-40599
+99 being remote
+
+
