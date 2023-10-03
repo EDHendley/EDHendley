@@ -45,12 +45,12 @@ SSH Dynamic Port Forwarding 2-Step
 Blue Private Host-1:
 ssh student@172.16.82.106 -L 1111:10.10.0.40:22 -NT
 ssh student@localhost -D 9050 -p 1111 -NT
-
+*************************************************************
 proxychains curl ftp://www.onlineftp.ch
 proxychains wget -r www.espn.com
 proxychains ./scan.sh
 proxychains ssh student@172.16.101.2
-
+*************************************************************
 OPERATIONS
 
 ss -alntp
@@ -61,4 +61,15 @@ ports
 40500-40599
 99 being remote
 
+Task 3 - Donovian Tunnels Training: dig_dug_dig_dug
+    Your Network Number is N (Given by Instructor)
+    Credentials: net{N}_studentX:passwordX
+    X is your student number
+    T3 (Atropia) Float IP address is - 10.50.42.216
+    T4 (Pineland) Float IP address is - 10.50.44.211 (Note - You can only telnet here to act as an insider, this will not be a routed path)
 
+ssh net5_student5@10.50.42.216 -L 40500:10.3.0.27:80 -NT
+wget -r localhost:40500
+
+ssh net5_student5@10.50.42.216 -D 9050 -NT
+proxychains wget -r ftp://10.3.0.1
