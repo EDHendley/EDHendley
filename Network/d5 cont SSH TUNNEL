@@ -73,3 +73,30 @@ wget -r localhost:40500
 
 ssh net5_student5@10.50.42.216 -D 9050 -NT
 proxychains wget -r ftp://10.3.0.1
+
+MY NOTES
+connecting through port 22
+
+ssh <name>@<inside_ip1> -R <RHP1>:localhost:22 -NT
+ssh <name>@<outside_ip1> -L <RHP2>:localhost:<RHP1> -NT
+ssh <name>@localhost -p <RHP2> -L <RHP3>:<inside_ip2>:80 -NT
+wget -r http://localhost:<RHP3>
+
+http because we went through port 80 (http)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
