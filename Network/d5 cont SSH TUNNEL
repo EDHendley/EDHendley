@@ -84,11 +84,13 @@ wget -r http://localhost:<RHP3>
 
 http because we went through port 80 (http)
 
+10.3.0.
 
+cat /usr/share/cctc/hint.txt
+You have accessed the Atlantica government server. There is nothing interesting on this server, however, it used to have access to the 10.4.0.0/24 and 10.5.0.0/24 networks until the admins shut it down. Try to access those networks through another way.
 
-
-
-
+#1
+Plase Do Not Throw Sausage Pizza Away
 
 
 
