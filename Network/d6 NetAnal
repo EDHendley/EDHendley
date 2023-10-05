@@ -2,7 +2,6 @@ POF
   passive OS fingerprinting
     looks at variations in intial TTL, frag flag, default ip header length, window size, TCP options
   sudo p0f -i eth0
-
   sudo cat /var/log/po0.log | channel 
   sudo pof -r wget.pcap -o /var/log/p0f.log
 
@@ -14,7 +13,6 @@ WIRESHARK
     look for one sided communciations
   ENDPOINTS
   IO Graph, monitor network traffic over course  of pcap
-
   Expert information
 
 TCPDUMP
