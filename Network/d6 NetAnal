@@ -1,1 +1,126 @@
+POF
+  passive OS fingerprinting
+    looks at variations in intial TTL, frag flag, default ip header length, window size, TCP options
+  sudo p0f -i eth0
+
+  sudo cat /var/log/po0.log | channel 
+  sudo pof -r wget.pcap -o /var/log/p0f.log
+
+
+
+
+WIRESHARK
+  Protocol Hierachy Statistics
+    specific protocols
+    malformed packets
+  Conversations
+    look for one sided communciations
+  ENDPOINTS
+  IO Graph, monitor network traffic over course  of pcap
+
+  Expert information
+
+
+
+
+TCPDUMP
+
+sudo tcpdump <fileName.pcapL
+  will spit out pcap info in CLI
+sudo tcpdump -r practice.pcap 'tcp[13] =0x02'
+  'tcp[13] =0x02' is SYN packet
+
+Network Data Types
+    Full Packet Capture Data (pcap)
+    Session Data
+        sflow (only show a few packets at a time)
+        NetFlow (cpu intense)
+    Statistical Data
+      traffic data, user, stuff you put in powerpoint and show boss/customer
+    Packet String Data
+    Alert Data
+    Log Data
+      
+METHODS OF DATA COLLECTION
+  TAP
+
+  SPAN
+
+  ARP Spoofing (MitM)
+
+Indicators
+  .exe/executable files
+  NOP sled
+  Repeated Letters
+  Well Known Signatures
+  Mismatched Protocols
+  Unusual traffic
+  Large amounts of traffic/ unusual times
+
+Potential Indicators of Attack
+  Destinations
+  Ports
+  Public Servers/DMZs
+  Off-Hours
+  Network Scans
+  Alarm Events
+  Malware Reinfection
+  Remote logins
+  High levels of email protocols
+
+Potential Indicators of Compromise
+
+  Unusual traffic outbound
+  Anomalous user login or account use
+  Size of responses for HTML
+  High number of requests for the same files
+  Using non-standard ports/ application-port mismatch
+  Writing changes to the registry/system files
+  DNS requests
+  Unexpected/ unusual patching
+  Unusual tasks
+
+Types of Malware
+    Adware/Spyware
+        large amounts of traffic/ unusual traffic
+        IOA
+            Destinations
+        IOC
+            Unusual traffic outbound
+    Virus
+        phishing/ watering hole
+        IOA
+            Alarm Events, Email protocols
+        IOC
+            changes to the registry/ system files
+Types of Malware 2
+    Worm
+        phishing/ watering hole
+        IOA
+            Alarm events
+        IOC
+            changes to registry/ system files
+    Trojan
+        beaconing
+        IOA
+            Destinations
+        IOC
+            Unusual traffic outbound, unusual tasks, changes to registry/ system files
+
+Potential Methods of Detection for IOAs and IOCs
+    Display Filters
+    Follow Streams
+    BPFs
+    Color Coding
+    Hex Outputs
+
+Decoding
+    enca
+    chardet
+    iconv
+
+
+
+
+
 
