@@ -6,9 +6,6 @@ POF
   sudo cat /var/log/po0.log | channel 
   sudo pof -r wget.pcap -o /var/log/p0f.log
 
-
-
-
 WIRESHARK
   Protocol Hierachy Statistics
     specific protocols
@@ -20,11 +17,7 @@ WIRESHARK
 
   Expert information
 
-
-
-
 TCPDUMP
-
 sudo tcpdump <fileName.pcapL
   will spit out pcap info in CLI
 sudo tcpdump -r practice.pcap 'tcp[13] =0x02'
