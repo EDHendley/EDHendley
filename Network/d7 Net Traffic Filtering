@@ -41,6 +41,28 @@ NFTABLES
     [matches] = typically protocol headers(i.e. ip, ip6, tcp, udp, icmp, ether, etc)
     (matches) = these are specific to the [matches] field.
     [statement] = action performed when packet is matched. Some examples are: log, accept, drop, reject, counter,       nat (dnat, snat, masquerade)
+  #Modify nftables
+    nft {list | flush} ruleset
+    nft {delete | list | flush } table [family] [table]
+    nft {delete | list | flush } chain [family] [table] [chain]
+
+  #Modify nftables
+    nft list table [family] [table] [-a]
+      
+      Adds after position
+        nft add rule [family] [table] [chain] [position <position>] [matches (matches)] [statement]
+
+      Inserts before position
+        nft insert rule [family] [table] [chain] [position <position>] [matches (matches)] [statement]
+      Replaces rule at handle
+        nft replace rule [family] [table] [chain] [handle <handle>] [matches (matches)] [statement]
+      Deletes rule at handle
+        nft delete rule [family] [table] [chain] [handle <handle>]
+
+
+
+
+
 
 
 
