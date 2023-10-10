@@ -64,7 +64,9 @@ EXAMPLES
 sudo iptables -L
 sudo iptables -A INPUT -dport 22 -j ACCEPT (adds rule allows SSH traffic IN our box)
 sudo iptables -A OUTPUT -sport 22 -j ACCEPT (adds rule allows SSH traffic OUT our box)
-
+sudo iptables -P INPUT DROP
+sudo iptables -P OUTPUT DROP
+sudo iptables -L -n --line-numbers
 
 
 
