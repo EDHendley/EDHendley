@@ -1,1 +1,14 @@
+Network Device Operation Mode
+
+  Routed mode -- the firewall is a "routed hop" in the network. It has addressable interfaces in different          networks, can perform NAT between connected networks, and can use routing protocols to relay information          between security zones.
+
+  Transparent mode -- A transparent firewall is placed on the network as a Layer 2 device that acts like a          "bump in the wire". It is not seen as a hop to connected devices is also called a "stealth firewall".             Benefits to this type of setup include it makes it much more difficult for an attacker to find the firewall       and perform reconnaissance such as "Firewalking".
+
+
+
+
+
+
+
+
 
