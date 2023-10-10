@@ -64,9 +64,50 @@ EXAMPLES
 sudo iptables -L
 sudo iptables -A INPUT -dport 22 -j ACCEPT (adds rule allows SSH traffic IN our box)
 sudo iptables -A OUTPUT -sport 22 -j ACCEPT (adds rule allows SSH traffic OUT our box)
+sudo iptables -A INPUT -p tcp -m multiport --port 22,23,80 -j ACCEPT
+sudo iptables -A OUTPUT -p tcp -m multiport --port 22,23,80 -j ACCEPT
 sudo iptables -P INPUT DROP
 sudo iptables -P OUTPUT DROP
 sudo iptables -L -n --line-numbers
+
+-m is match
+-m state --state NEW,ESTABLISHED,etc
+can use multiple matches in one line but have to use new -m everytime
+sudo iptables -A INPUT -p tcp -m multiport --port 22,23,80 -m state --state NEW -j ACCEPT
+
+sudo nft add table ip CCTC 
+sudo nft add chain ip CCTC input {type filter hook input priority 0 \; policy accept \;} (makes sure to reference the same table, here its CCTC)
+sudo nft add chain ip CCTC input {type filter hook output priority 0 \; policy accept \;} (makes sure to reference the same table, here its CCTC)
+
+
+sudo nft add rule ip MyTable input tcp dport {ssh,telnet,http}
+sudo nft add rule ip MyTable input tcp sport {ssh,telnet,http}
+
+SOURCE NAT
+iptables -t nat -A POSTROUTING -o eth0 -j SNAT --to 1.1.1.1                (slide 12.3)
+DESTI NAT
+iptables -t nat -A PREROUTING -i eth0 -j DNAT --to 10.0.0.1                (slide 12.4)
+SOURCE PAT
+iptables -t nat -A POSTROUTING -p tcp -o eth0 -j SNAT --to 1.1.1.1:9001    (slide 12.5)
+DEST PAT
+iptables -t nat -A PREROUTING -p tcp -i eth0 -j DNAT --to 10.0.0.1:8080    (slide 12.6)
+
+Source NAT
+    nft add rule ip NAT POSTROUTING ip saddr 10.1.0.2 oif eth0 snat 144.15.60.11
+Destination NAT
+    nft add rule ip NAT PREROUTING iif eth0 tcp dport { 80, 443 } dnat 10.1.0.3
+Source NAT w/ masquerade
+  nft add rule ip NAT POSTROUTING ip saddr 10.1.0.0/24 oif eth0 masquerade
+Destination NAT (port forwarding) with redirect
+  nft add rule ip NAT PREROUTING tcp dport 80 redirect to 8080
+
+
+
+
+
+
+
+
 
 
 
