@@ -4,8 +4,26 @@ Network Device Operation Mode
 
   Transparent mode -- A transparent firewall is placed on the network as a Layer 2 device that acts like a          "bump in the wire". It is not seen as a hop to connected devices is also called a "stealth firewall".             Benefits to this type of setup include it makes it much more difficult for an attacker to find the firewall       and perform reconnaissance such as "Firewalking".
 
+Configuring Tables
+
+  filter - default. ACCEPTS, DROPS, or REJECTS packets,
+    INPUT, FORWARD, OUTPUT
+  nat - used to translate private and public addresses + ports,
+    INPUT, FORWARD, OUTPUT
+  mangle - provides special packet alteration. can modify various fields headers fields
+    PREROUTING, POSTROUTING, INPUT, FORWARD, OUTPUT
+  raw - used to configure exemptions from connection tracking
+    PREROUTING, OUTPUT
+  security - used for MAC networking rules
+    INPUT, FORWARD, OUTPUT
 
 
+
+
+
+iptables -t [table] -A [chain] [rules] -j [action]
+--line numbers,
+-P changes default policy (whitelist/blacklist), check this before flushing (-F)
 
 
 
