@@ -102,8 +102,8 @@ Destination NAT (port forwarding) with redirect
   nft add rule ip NAT PREROUTING tcp dport 80 redirect to 8080
 
 
-
-
+task 1 T@bl3sth@tF1lt3r
+task 2 N@tF1lt3rsf0rL1f3
 
 
 
