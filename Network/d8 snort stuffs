@@ -1,1 +1,25 @@
 
+
+
+
+EXAMPLES:
+Look for anonymous ftp traffic
+  alert tcp any any -> any 21 (msg:"Anonymous FTP Login"; content: "anonymous"; sid 2121; )
+At byte 6
+  ; offset:5;
+This will search the first 14 bytes of the packet looking for the word “anonymous”.
+  alert tcp any any -> any 21 (msg:"Anonymous FTP Login"; content: "anonymous"; depth:14; sid:2121; )
+Deactivates the case sensitivity of a text search.
+  alert tcp any any -> any 21 (msg:"Anonymous FTP Login"; content: "anonymous"; nocase; sid:2121; )
+
+Rule Header
+ICMP ping sweep
+  alert icmp any any -> 10.1.0.2 any (msg: "NMAP ping sweep Scan"; dsize:0; sid:10000004; rev: 1; )
+Look for a specific set of Hex bits (NoOP sled)
+  alert tcp any any -> any any (msg:"NoOp sled"; content: "|9090 9090 9090|"; sid:9090; rev: 1; )
+Incorrect telnet login attempt
+  alert tcp any 23 -> any any (msg:"TELNET login incorrect"; content:"Login incorrect"; flow:established,from_server; classtype:bad-unknown; sid:2323; rev:6; )
+
+
+
+
