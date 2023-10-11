@@ -49,3 +49,12 @@ sudo snort -r <pcap.pcap> -l <log path> -c <rule path>
 
 TYPE proto IP PORT -> IP PORT (msg:"";itype:;icode:;sid:;)
 
+
+
+alert udp any any -> 10.0.0.0/8 137 (msg:"message found";sid:100096;)
+alert udp any any -> 10.0.0.0/8 138 (msg:"message found";sid:100095;)
+
+
+
+
+
