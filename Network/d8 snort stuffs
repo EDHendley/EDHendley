@@ -7,7 +7,7 @@ EXAMPLES:
 Look for anonymous ftp traffic
   alert tcp any any -> any 21 (msg:"Anonymous FTP Login"; content: "anonymous"; sid 2121; )
 At byte 6
-  ; offset:5;
+ (... ; offset:5; ...; )
 This will search the first 14 bytes of the packet looking for the word “anonymous”.
   alert tcp any any -> any 21 (msg:"Anonymous FTP Login"; content: "anonymous"; depth:14; sid:2121; )
 Deactivates the case sensitivity of a text search.
@@ -35,10 +35,13 @@ cd /etc/snort/rules
 echo 'alert icmp any any -> any any (msg: "rules stuffs"; content:"Bad Intentions"; sid:42069; rev 1; )' >> snortRuleName.rules
 restart snort daemon to watch for newly updated alerts/rules
 
+to run a specific rule
+sudo snort -D -l /var/log/snort/ -c /etc/snort/rules/<name.rules>
+
+FAILED IDS/IPS
+Fail Open
+  if system goes down, the network connection stays open and allows traffic through. use if network availability is preferred
+Fail Close
+  if system does down, network connection closes and does NOT allow traffic through, us if network security is preferred
 
 
-
-
-
-
-when you add 
