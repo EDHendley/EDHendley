@@ -44,4 +44,5 @@ Fail Open
 Fail Close
   if system does down, network connection closes and does NOT allow traffic through, us if network security is preferred
 
-
+to run snort against pcap
+sudo snort -r <pcap.pcap> -l <log path> -c <rule path>
