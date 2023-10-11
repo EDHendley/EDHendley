@@ -1,4 +1,5 @@
-
+Snort IDS/IPS rule - HEADER
+[action] [protocol] [s.ip] [s.port] [direction] [d.ip] [d.port] ( match conditions ;)
 
 
 
@@ -20,6 +21,24 @@ Look for a specific set of Hex bits (NoOP sled)
 Incorrect telnet login attempt
   alert tcp any 23 -> any any (msg:"TELNET login incorrect"; content:"Login incorrect"; flow:established,from_server; classtype:bad-unknown; sid:2323; rev:6; )
 
+/etc/snort
+/etc/snort/snort.conf
+when a rule hits,
+  stored in /var/log/snort + stores the pcap
+
+Start Snort Daemon to watch for hits
+snort -D -c /etc/snort/snort.conf -l /var/log/snort
+**might have to sudo to run daemon**
+
+saving rules
+cd /etc/snort/rules
+echo 'alert icmp any any -> any any (msg: "rules stuffs"; content:"Bad Intentions"; sid:42069; rev 1; )' >> snortRuleName.rules
+restart snort daemon to watch for newly updated alerts/rules
 
 
 
+
+
+
+
+when you add 
