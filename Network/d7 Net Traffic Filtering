@@ -141,7 +141,14 @@ sudo nft add rule ip CCTC input tcp sport {5050,5150} accept
 Allow New and Established traffic to/from via HTTP
 ### same as for SSH, telnet, etc... but with port 80 for http
 ---------------------------------------------------------------------------------------------------------
+NFT Tables
+nft add table ip NAT
+nft add chain ip NAT PREROUTING { type nat hook prerouting priority 0 \; }
+nft add chain ip NAT POSTROUTING { type nat hook postrouting priority 0\;}
+nft add rule ip NAT POSTROUTING oif eth0 ip saddr <from IP> snat to <to IP>
 
+IP TABLES
+iptables -t nat -A POSTROUTING -o eth0 -s <from IP> -j SNAT --to <to IP>
 
 
 t1 467accfb25050296431008a1357eacb1
@@ -152,3 +159,4 @@ verified flag d3b88e04de1e76482a1972f36734a7d8
 
 NAT t5 0c2ca80fad4accccce3bcecec1d238ce
 NAT t6 be33fe60229f8b8ee22931a3820d30ac
+md5sum verified e4f4c65b3884eadf7986adc76caea32c
