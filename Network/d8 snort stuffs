@@ -46,3 +46,6 @@ Fail Close
 
 to run snort against pcap
 sudo snort -r <pcap.pcap> -l <log path> -c <rule path>
+
+TYPE proto IP PORT -> IP PORT (msg:"";itype:;icode:;sid:;)
+
