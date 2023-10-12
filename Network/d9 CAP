@@ -33,6 +33,29 @@ https://www.linuxquestions.org/questions/linux-networking-3/ttl-change-28640/
 sudo iptables -t mangle -A POSTROUTING -j TTL --ttl-set xxx
 sudo iptables -t mangle -L     (to check your work, 4urHealth)
 
+nmap <newPivot> -p <range> -T4
+  got 7777 as ssh
+
+ssh net4_student5@10.50.27.32 -L 40599:localhost:22 -NT          1st pivot
+ssh net4_student5@10.50.41.66 -p 7777 -L 40598:localhost:22 -NT  2nd pivot
+ssh net4_student5@10.50.41.66 -p 7777 -D 9050 -NT                dynamic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 02 WEB QUESTIONS
