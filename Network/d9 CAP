@@ -4,7 +4,7 @@ ports 40500-40599
 
 range: 10.1.1.30/25
 
-
+02 WEB QUESTIONS
 Q1
 APIPA uses the IP network range of 169.254.0.0/16. 
 What RFC number governs this? Enter only the BASE64 conversion of the number.
@@ -27,8 +27,26 @@ A router receives a 5000 byte packet on eth0.
 The MTU for the outbound interface (eth1) is 1500. 
 What would the fragmentation offset increment be with the conditions below?
 
+02 PCAP QUESTIONS
 
-
+To answer these 4 questions, you will need to use tcpdump and BPF's against the capstone-bpf.pcap file.
+-------------------------------------------------------------------------------
+Question 1:
+Using BPF’s, determine how many packets with a DSCP of 26 being sent to the host 10.0.0.103.
+Provide the number of packets converted to BASE64.
+-------------------------------------------------------------------------------
+Question 2:
+What is the total number of fragmented packets?
+Provide the number of packets converted to BASE64.
+-------------------------------------------------------------------------------
+Question 3:
+How many packets have the DF flag set and has ONLY the RST and FIN TCP Flags set?
+Provide the number of packets converted to BASE64.
+-------------------------------------------------------------------------------
+Question 4:
+An attacker is targeting the host 10.0.0.104 with either a TCP full or half open scan.
+Based off the pcap, how many ports are open?
+Provide the number of ports converted to BASE64.
 
 
 
