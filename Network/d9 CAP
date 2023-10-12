@@ -4,6 +4,34 @@ ports 40500-40599
 
 range: 10.1.1.30/25
 
+METHOD
+ssh net4_student5@<pivot>
+ip a
+*note the **range** *
+
+ssh net4_student5@<pivot> -L <myHighPort>:localhost:22 -NT
+ssh net4_student5@<pivot> -p <myHighPort> -D 9050 -NT
+IH: proxychains ...
+proxychains ./scans.sh
+  scan the **range**
+
+proxychains telnet <ipBadHost>
+ls <test/path/>
+proxychains wget -r <proto>://<ip>
+  ftp,http, etc every ip
+proxychains wget -r <ip>:<port>
+eom <path>.png
+
+
+
+
+
+
+
+
+
+
+
 02 WEB QUESTIONS
 Q1
 APIPA uses the IP network range of 169.254.0.0/16. 
