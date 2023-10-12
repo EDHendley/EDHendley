@@ -28,7 +28,6 @@ The MTU for the outbound interface (eth1) is 1500.
 What would the fragmentation offset increment be with the conditions below?
 
 02 PCAP QUESTIONS
-
 To answer these 4 questions, you will need to use tcpdump and BPF's against the capstone-bpf.pcap file.
 -------------------------------------------------------------------------------
 Question 1:
