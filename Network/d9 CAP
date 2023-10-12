@@ -18,6 +18,8 @@ Which type of ARP is sent in order to perform a MitM attack?</p>
 Specify the answer in ALL CAPS and convert to BASE64.
 
 Q4
+An attacker built a FRAME that looks like this:
+Destination MAC | Source MAC | 0x8100 | 1 | 0x8100 | 100 | 0x0800 | IPv4 Header | TCP Header | Data | FCS |
 What form of attack is being performed? Supply your answer in ALL CAPS and convert to BASE64.
 
 Q5
