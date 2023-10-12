@@ -22,9 +22,12 @@ proxychains wget -r <proto>://<ip>
 proxychains wget -r <ip>:<port>
 eom <path>.png
 
+proxychains nmap -p 1000-9999 <ip> -T4
+or -p- to scan all 65k ports
 
-
-
+"TRY TO SNIFF OUT ... " use tcpdump
+tcpdump -i eth1 port 69 -XXv
+tcpdump -i <ethx> port <#> -XXv
 
 
 
