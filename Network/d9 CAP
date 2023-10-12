@@ -29,9 +29,9 @@ or -p- to scan all 65k ports
 tcpdump -i eth1 port 69 -XXv
 tcpdump -i <ethx> port <#> -XXv
 
-
-
-
+https://www.linuxquestions.org/questions/linux-networking-3/ttl-change-28640/
+sudo iptables -t mangle -A POSTROUTING -j TTL --ttl-set xxx
+sudo iptables -t mangle -L     (to check your work, 4urHealth)
 
 
 
