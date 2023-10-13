@@ -40,9 +40,12 @@ ssh net4_student5@10.50.27.32 -L 40599:localhost:22 -NT          1st pivot
 ssh net4_student5@10.50.41.66 -p 7777 -L 40598:localhost:22 -NT  2nd pivot
 ssh net4_student5@10.50.41.66 -p 7777 -D 9050 -NT                dynamic
 
-
-
-
+setup a remote tunnel using the 2222 port on .7, make sure it gets back to IH
+this will find the .140 with an FTP port open
+ssh net4_student5@10.50.41.66 -p 7777 -L 40555:10.2.2.7:23 -NT
+ssh net4_student5@pivot -p target_ssh_port -L RHP:target_IP:telnet_port
+telnet localhost <RHP>
+ssh net4_student5:localhost -p 40555 -D 9050 -NT
 
 
 
