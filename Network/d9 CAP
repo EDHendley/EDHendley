@@ -48,13 +48,14 @@ telnet localhost <RHP>
 ssh net4_student5:localhost -p 40555 -D 9050 -NT
 
 
-
-
-
-
-
-
-
+ssh net4_student5@10.50.41.66 -p 7777 -L 40518:localhost:7777 -NT
+ssh net4_student5@10.50.41.66 -p 7777 -L 40545:10.2.2.7:23 -NT
+telnet localhost <40545 (or w/r RHP)
+ssh net4_student5@10.2.2.6 -p 7777 -R 40585:localhost:2222 -NT
+ssh net4_student5@localhost -p 40518 -L 40523:localhost:40585 -NT
+ssh net4_comrade5@localhost -p 40523 -L 40530:10.10.10.167:404 -NT
+ssh net4_student5@localhost -p 40530 -D 9050 -NT
+ssh net4_student5@localhost -p 40530
 
 
 
