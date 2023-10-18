@@ -37,6 +37,11 @@ proxychains nmap -Pn -sT -n -p <ports> ip,<lastOcetet> 2>/dev/null
 or -sS or -sV
 
 
+PING SWEEP
+
+from ruby
+for i in ...
+
 
 
 
