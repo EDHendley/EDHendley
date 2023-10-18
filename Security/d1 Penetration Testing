@@ -1,1 +1,48 @@
 
+
+
+
+
+
+
+DEMO
+
+HTML
+http://10.50.45.252/webexample/htmldemo.html
+
+scripts in /usr/share/nmap
+nmap --scipt-help http-enum
+nmap --scipt http-enum <ip>
+
+CONTROL SOCKETS
+
+ssh -M -S /tmp/jump -o StrictHostKeyChecking=no -o usernknowhostsFile=/dev/null student5@10.50.43.159
+
+access thru tmp
+ssh -S / tmp/jump user$lp
+
+ssh follow tunnel
+ssh -S /tmp/T2 user@ip -O forward -L 2222:192.168.0.10:22
+*should return nothing*
+
+
+ssh -S /tmp/T2 -p 2222 -o StrictHostKeyChecking=no -o StrictHostKeyChecking=no user@ip
+
+scp -o ControlPath=/tmp/jump user@ip:/etc/passwd /tmp/passwd 
+
+ssh -S /tmp/jump user@ip -O forward -D 9050
+netstat -natu | grep 9050
+
+proxychains nmap -Pn -sT -n -p <ports> ip,<lastOcetet> 2>/dev/null
+or -sS or -sV
+
+
+
+
+
+
+
+
+
+
+
