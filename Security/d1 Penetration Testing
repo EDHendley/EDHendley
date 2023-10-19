@@ -16,7 +16,7 @@ nmap --scipt http-enum <ip>
 
 CONTROL SOCKETS
 
-ssh -M -S /tmp/jump -o StrictHostKeyChecking=no -o userknownhostsFile=/dev/null student5@10.50.43.159
+linOPS: ssh -M -S /tmp/jump -o StrictHostKeyChecking=no -o userknownhostsFile=/dev/null student5@10.50.43.159
 
 access thru tmp
 ssh -S / tmp/jump user$lp
@@ -30,7 +30,7 @@ ssh -S /tmp/T2 -p 2222 -o StrictHostKeyChecking=no -o StrictHostKeyChecking=no u
 
 scp -o ControlPath=/tmp/jump user@ip:/etc/passwd /tmp/passwd 
 
-ssh -S /tmp/jump user@ip -O -D 9050
+linOPs: ssh -S /tmp/jump user@ip -O -D 9050
 netstat -natu | grep 9050
 
 proxychains nmap -Pn -sT -n -p <ports> ip,<lastOcetet> 2>/dev/null
