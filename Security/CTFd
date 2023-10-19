@@ -3,3 +3,47 @@ Scheme of Maneuver:
 >Jump Box
 ->Network scan: 192.168.28.96/27
 -->Network scan:192.168.150.224/27
+
+
+linOPS: ssh -M -S /tmp/jump -o StrictHostKeyChecking=no -o userknownhostsFile=/dev/null student@10.50.43.220
+linOPS: ssh -S /tmp/jump student -D 9050
+linOPS: proxychains nmap -Pn -sT -n -p ports <ip>
+================================================================
+Nmap scan report for 192.168.28.105
+Host is up (0.0017s latency).
+Not shown: 65532 closed ports
+PORT     STATE SERVICE
+21/tcp   open  ftp
+23/tcp   open  telnet
+2222/tcp open  EtherNetIP-1
+
+PassTemporary
+loginfirst
+logout null bit
+houseBeatFliesLOW
+YourTempPassword
+
+====================================================================
+
+Nmap scan report for 192.168.28.111
+Host is up (0.0020s latency).
+Not shown: 65532 closed ports
+PORT     STATE SERVICE
+80/tcp   open  http
+2222/tcp open  EtherNetIP-1
+8080/tcp open  http-proxy
+
+80 is interesting
+contact.html  css/  images/  index.html  projets.html  sites/
+check index, projets, and sites/index
+Futures Inc.
+
+8080 is interesting
+about.html  buy-tickets.html  contact.html  css  fonts  images  index.html  js  news.html  speakers.html
+=====================================================================
+Nmap scan report for 192.168.28.100
+Host is up (0.0019s latency).
+Not shown: 65533 closed ports
+PORT     STATE SERVICE
+80/tcp   open  http
+2222/tcp open  EtherNetIP-1
