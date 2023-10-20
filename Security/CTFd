@@ -138,6 +138,9 @@ look into Contract_bids.html
 
 ===========================================================================================
 ===========================================================================================
+CTFd3
+
+SQL injection
 Donovian Database Exploitation (DWDBE)
 XX Dec 2026
 Start Time: 1300
@@ -181,10 +184,9 @@ PSP: Unknown
 Malware: Unknown
 Action: Conduct approved SQLi Exploitation techniques to collect intellegence.
 
-
-
-
-
+ssh -M -S /tmp/jump -o StrictHostKeyChecking=no -o userknownhostsFile=/dev/null student@10.50.43.220 -NT
+ssh -S /tmp/jump user -O forward -L 2222:192.168.28.111:2222
+ssh -S /tmp/jump user -O forward -p 2222 -L 3321:10.100.28.48:80
 
 
 
