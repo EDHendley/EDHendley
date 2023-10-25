@@ -259,3 +259,12 @@ Not shown: 65533 closed ports
 PORT     STATE SERVICE
 80/tcp   open  http
 2222/tcp open  EtherNetIP-1   -SSH***
+
+student@lin-ops:~$ ssh -S /tmp/jump user -O forward -L 8069:192.168.28.100:80
+student@lin-ops:~$ firefox localhost:8069
+
+SQL Injection Time
+http://localhost:8069/admin/
+
+
+
