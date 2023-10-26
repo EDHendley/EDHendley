@@ -377,8 +377,11 @@ PSP: Unknown
 Malware: Unknown
 Action: Exploit a network service on the machine
 
-
-
+student@lin-ops:~$ ssh student@localhost -L 15000:10.50.43.220:22 -NT
+student@lin-ops:~$   ssh-keygen -f "/home/student/.ssh/known_hosts" -R "[localhost]:15000" ---might have to run this
+student@lin-ops:~$ ssh student@localhost -p 15000 -D 9050
+student@lin-ops:~$ proxychains ssh comrade@192.168.28.111 -p 2222
+       StudentWebExploitPassword
 
 
 
