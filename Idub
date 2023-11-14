@@ -1,1 +1,49 @@
+DCO Toolkit
+
+Specs
+  Highly Adaptable
+  Airline Transportable
+  Fiber/Ethernet TAPS
+Overall
+  256 vCPU
+  2TB DDR4 ECC RAM
+  208TB Raw Flash Storage
+Per Node 6 Nodes
+  16 CPU Cores
+  256GB DDR4
+  26 TB Raw Flash Storage
+  2x SFP+ 10G Ports
+  2x 10G Ethernet
+  4x 1G Ethernet
+
+
+Discovery - Vulnerability Anal. - Net Monitoring - Event Correlation
+
+C2 - Devops - Threat Emulation -Digital Forensics - ICS/SCADA
+
+PM DCO Approved Tool tools list:
+
+RedHat Virtualization
+Ansible
+Bluescope/VTS
+Docker
+Encase
+Carbon Black
+GIT
+Nipper Studio
+Powershell
+RedSeal          -builds NetMaps
+Security Onion
+Wireshark
+
+
+
+
+
+
+
+
+
+
+
 
